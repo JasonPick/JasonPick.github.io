@@ -10,13 +10,13 @@ description: a technique website of a good guy
 author: Yifei
 
 # --- List of links in the navigation bar --- #
-
+url: "https://yifeiblog.com"
 navbar-links:
-  About Me: "aboutme"
+  #About Me: "aboutme"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  #Author's home: "https://deanattali.com"
 
 # --- Logo --- #
 
@@ -62,13 +62,13 @@ social-network-links:
 
 # Select which social network share links to show in posts
 share-links-active:
-  twitter: true
-  facebook: true
+  #twitter: true
+  #facebook: true
   linkedin: true
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "YIfeiWebsite.com"
+url-pretty: "YifeiWebsite.com"
 
 # Create a "tags" index page and make tags on each post clickable
 link-tags: true
