@@ -10,11 +10,8 @@ categories: ['Useful Skills']
 
 这是一个关于MarkDwon的小教程，方便实用
 
-**Here is some bold text**
 
-## Here is a secondary heading
-
-Here's a useless table:
+总结表格:
 
 | 名称 | 操作 | 效果 |
 | :------ |:--- | :--- |
