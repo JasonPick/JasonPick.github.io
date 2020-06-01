@@ -16,9 +16,8 @@ categories: ['algorithms']
 ### 1.1 特殊的二叉树
 
 {: .box-note}
- **Full binary tree满二叉树**：一个节点只能有0或者2个节点
-{: .box-note}
- **Complete binary tree完全二叉树**：除了最下层全满，最下层所有叶子结点向左边靠拢 
+ **Full binary tree满二叉树**：一个节点只能有0或者2个节点  
+ **Complete binary tree完全二叉树**：除了最下层全满，最下层所有叶子结点向左边靠拢   
 
 
 ### 1.2 完全二叉树
@@ -152,41 +151,16 @@ struct node* search(int data) {
  3.后序遍历[145 Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)  
 
 * 二叉树的层序遍历
+{: .box-warning}
 
- * 层序遍历 [102 Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
- * bottom-up 层序遍历[]()
- * 之字形层序遍历[]()
- * 垂直遍历 []()
+ 1.层序遍历 [102 Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)  
+ 2.bottom-up 层序遍历[107 Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/)  
+ 3.之字形层序遍历[103 Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)  
+ 4.垂直遍历 [314 Binary Tree Vertical Order Traversal]()  
  
-* 二叉树的搜索
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
 
 
-How about a yummy crepe?
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
-
-It can also be centered!
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
-
-Here's a code chunk:
-
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
 
 And here is the same code with syntax highlighting:
 
