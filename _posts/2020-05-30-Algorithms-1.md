@@ -151,6 +151,7 @@ struct node* search(int data) {
  3.后序遍历[145 Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)  
 
 * 二叉树的层序遍历
+
 {: .box-warning}
 
  1.层序遍历 [102 Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)  
@@ -158,6 +159,14 @@ struct node* search(int data) {
  3.之字形层序遍历[103 Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)  
  4.垂直遍历 [314 Binary Tree Vertical Order Traversal]()  
  
+
+144.94.145 二叉树的前序遍历、中序遍历、后序遍历
+
+思路：
+* 递归： 构造一个helper函数，将res的引用作为参数传入helper，helper实现功能。  
+* 循环： 先构造一个stack，对于前序和后序遍历来说先将root压入栈内，while循环，条件为栈不为空，弹出栈顶元素，如果不为空那么先将val存入res，左结点右结点入栈（如果是先序，那么右结点先入否则左结点先入），如果是后序遍历在结尾处需要反转res，再返回。  
+对于中序来说，先不将root压入栈中，cur=root，找cur的最左结点，将cur压入栈中，找到最左之后，弹出栈顶元素，将val加入res，cur=cur->right。
+
 
 
 
