@@ -168,6 +168,11 @@ struct node* search(int data) {
 对于中序来说，先不将root压入栈中，cur=root，找cur的最左结点，将cur压入栈中，找到最左之后，弹出栈顶元素，将val加入res，cur=cur->right。
 
 
+102.103.107 二叉树的层序遍历、之字形遍历、自底向上遍历
+
+思路：
+* 递归：层序遍历和自底向上遍历使用递归，一个helper函数，传入res, level, node， 边界条件node为空return，如果level>=res.size那么在res中加入新的行，将当前val加入res\[level\]中，左循环，右循环。如果是自底向上的遍历，在返回之前对res进行reverse。  
+* 循环：之字形遍历使用循环遍历，创造一个queue，将root加入queue中，while循环queue不为空的时候，定义一个新的vector存储这一层的值,弹出queue.front(),queue pop一下，如果flag==0从尾部插入，如果flag==1从头部插入，左子结点加入queue，右子结点加入queue。
 
 
 
