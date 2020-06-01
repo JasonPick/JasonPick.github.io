@@ -17,7 +17,7 @@ categories: ['algorithms']
 
 {: .box-note}
  **Full binary tree满二叉树**：一个节点只能有0或者2个节点
- 
+{: .box-note}
  **Complete binary tree完全二叉树**：除了最下层全满，最下层所有叶子结点向左边靠拢 
 
 
@@ -147,9 +147,9 @@ struct node* search(int data) {
 
 {: .box-warning}
 
- 1.前序遍历 [144 Binary Tree Preorder Traversal ](https://leetcode.com/problems/binary-tree-preorder-traversal/)
- 2.中序遍历[94 Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
- 3.后序遍历[145 Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)
+ 1.前序遍历 [144 Binary Tree Preorder Traversal ](https://leetcode.com/problems/binary-tree-preorder-traversal/)  
+ 2.中序遍历[94 Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)  
+ 3.后序遍历[145 Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)  
 
 * 二叉树的层序遍历
 
