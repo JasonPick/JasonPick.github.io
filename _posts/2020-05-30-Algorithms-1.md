@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 树专题
-subtitle: Each post also has a subtitle
+subtitle: Part 1：二叉树、二叉搜索树
 tags: [algorithms, tree]
 comments: true
 categories: ['algorithms']
@@ -16,21 +16,54 @@ categories: ['algorithms']
 ### 特殊的二叉树
 
 {: .box-note}
-**Note:** * Full binary tree满二叉树：一个节点只能有0或者2个节点
-          * Complete binary tree完全二叉树：除了最下层全满，最下层所有叶子结点向左边靠拢 
+ * **Full binary tree满二叉树**：一个节点只能有0或者2个节点
+ * **Complete binary tree完全二叉树**：除了最下层全满，最下层所有叶子结点向左边靠拢 
 
 
 ### 完全二叉树
+完全二叉树是_堆_的底层实现
+
+堆的时间复杂度表如下
+
+| 操作 | 时间复杂度| 
+| :------ |:--- | 
+| 找到最小值 | O(1) |
+| 删除最小值| O(logn) | 
+| 插入新的数 | O(logn)|
+
+一些关于完全二叉树的统计信息
+
+| 名称 | 表示| 
+| :------ |:--- | 
+| 高度 | O(log(n)) |
+| 结点数| 2^(h+1)-1 | 
+| 结点i的子结点 | 2i+1 2i+2|
+| 结点i的父亲结点 | (i-1)/2|
 
 
 ## 二叉搜索树
 
+**Binary search tree二叉搜索树**：二叉搜索树的所有节点x，x的左子树都小于x，x的右子树都大于x，非常易于查询。
 
 ![二叉树图示](https://www.tutorialspoint.com/data_structures_algorithms/images/binary_tree.jpg)
 
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
+**Tree Node**
+~~~
+struct node {
+   int data;   
+   struct node *leftChild;
+   struct node *rightChild;
+};
+~~~
+
+### 二叉搜索树的增删改查
+#### 插入元素操作
+插入
 
 **Here is some bold text**
+
+
+
 
 ## Here is a secondary heading
 
