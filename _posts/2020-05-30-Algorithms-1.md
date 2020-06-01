@@ -6,6 +6,24 @@ tags: [algorithms, tree]
 comments: true
 categories: ['algorithms']
 ---
+# 树分为二叉树、二叉搜索树、平衡二叉树、红黑树
+## 二叉树
+
+![二叉树图示](https://www.tutorialspoint.com/data_structures_algorithms/images/binary_tree.jpg)
+### 重要的概念
+* **高度**：最长路径的边的个数
+
+特殊的二叉树：
+* **Full binary tree满二叉树**：一个节点只能有0或者2个节点
+* **Complete binary tree完全二叉树**：除了最下层全满，最下层所有叶子结点向左边靠拢 
+
+### 完全二叉树
+
+
+## 二叉搜索树
+
+
+![二叉树图示](https://www.tutorialspoint.com/data_structures_algorithms/images/binary_tree.jpg)
 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
