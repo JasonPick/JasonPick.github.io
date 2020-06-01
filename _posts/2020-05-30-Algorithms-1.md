@@ -167,12 +167,27 @@ struct node* search(int data) {
 * 循环： 先构造一个stack，对于前序和后序遍历来说先将root压入栈内，while循环，条件为栈不为空，弹出栈顶元素，如果不为空那么先将val存入res，左结点右结点入栈（如果是先序，那么右结点先入否则左结点先入），如果是后序遍历在结尾处需要反转res，再返回。  
 对于中序来说，先不将root压入栈中，cur=root，找cur的最左结点，将cur压入栈中，找到最左之后，弹出栈顶元素，将val加入res，cur=cur->right。
 
+**Solutions**
+
+{: .box-error}
+
+1.[144 PreOrder](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/144.binary_tree_preorder.cpp).  
+2.[94 Inorder](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/94.binary_tree_inorder.cpp).   
+3.[145 PostOrder](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/145.binary_tree_postorder.cpp).   
 
 102.103.107 二叉树的层序遍历、之字形遍历、自底向上遍历
 
 思路：
 * 递归：层序遍历和自底向上遍历使用递归，一个helper函数，传入res, level, node， 边界条件node为空return，如果level>=res.size那么在res中加入新的行，将当前val加入res\[level\]中，左循环，右循环。如果是自底向上的遍历，在返回之前对res进行reverse。  
 * 循环：之字形遍历使用循环遍历，创造一个queue，将root加入queue中，while循环queue不为空的时候，定义一个新的vector存储这一层的值,弹出queue.front(),queue pop一下，如果flag==0从尾部插入，如果flag==1从头部插入，左子结点加入queue，右子结点加入queue。
+
+**Solutions**
+
+{: .box-error}
+
+1.[102 level order](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/102.binary_tree_level_order.cpp).   
+2.[107 bottom_up order](https://github.com/JasonPick/recordings-in Jan/blob/leecode/leecode/tree/107.binary_tree_bottom_up_order.cpp).   
+3.[103 zigzag order](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/103.binary_tree_zigzag_order.cpp).   
 
 
 
