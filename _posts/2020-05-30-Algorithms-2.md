@@ -118,6 +118,8 @@ int main(){
 
 array实现的queue虽然简单，但是却是固定size的。
 
+**队列的linked list实现**
+
 ```c++
 #include<iostream>
 
@@ -177,7 +179,18 @@ int main(){
 
 ```
 
-**队列的linked list实现**
+**STL中的queue API**
+
+| API | Function |
+| :------ |:--- | 
+| empty() | Returns whether the queue is empty |
+| size() |Returns the size of the queue | 
+| swap() | Swap the contents of two same queue | 
+| emplace() | Insert a new element into the queue at the end of the queue| 
+| front() |  returns a reference to the first element of the queue | 
+| back() | returns a reference to the last element of the queue | 
+| push(g) |  adds the element ‘g’ at the end of the queue| 
+| pop() |  deletes the first element of the queue | 
 
 
 
