@@ -11,30 +11,34 @@ categories: ['algorithms']
 
 # 1. 队列
 
-一个队列是一个线性结构，并且遵循 **先进先出(FIFO)** 的顺序。
+一个队列是一个线性结构，并且遵循 **先进先出(FIFO)** 的顺序。  
 
 队列的栈的区别在于队列移除最远距离添加的，栈移除最近添加的。
+
 
 **队列的操作**
 
 队列中主要存在四种操作：
-_Enqueue_:加入一个元素进队列。如果队列已满则会发生溢出。
-_Dequeue_:从队列中移除一个元素，元素出队的顺序和元素入队的顺序相同。如果队列为空，则会发生underflow。
-_Front_:获取队首元素。
-_Rear_:获取队尾元素。
 
-![queue](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/img/queue_picture.jpeg)
+Enqueue:加入一个元素进队列。如果队列已满则会发生溢出。 
+
+Dequeue:从队列中移除一个元素，元素出队的顺序和元素入队的顺序相同。如果队列为空，则会发生underflow。 
+
+Front:获取队首元素。
+
+Rear:获取队尾元素。
+
+![](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/img/queue_picture.jpeg)
 
 **队列的应用**
 
-队列经常应用于不需要立即处理，并且要求FIFO顺序的事情(BFS)。  
-1.当一个资源是由多个消费者共享的时候(CPU的分配，disk的分配)  
-2.当数据是异步的时候(IO缓存，文件IO和管道)  
-
+队列经常应用于不需要立即处理，并且要求FIFO顺序的事情(BFS)。
+1.当一个资源是由多个消费者共享的时候(CPU的分配，disk的分配)
+2.当数据是异步的时候(IO缓存，文件IO和管道)
 
 **队列的array实现**
 
-对于实现，主要实现队列的四个操作，跟踪两个index，rear and front。我们不可以直接增加front或者rear，我们采用循环的方法创建queue。
+对于实现，主要实现队列的四个操作，跟踪两个index，rear and front。我们不可以直接增加front或者rear，我们采用循环的方法创建queue
 
 ```c++
 #include <iostream>
@@ -114,11 +118,6 @@ int main(){
 
 array实现的queue虽然简单，但是却是固定size的。
 
-
-
-**队列的linked list实现**
-
-
 ```c++
 #include<iostream>
 
@@ -175,12 +174,10 @@ int main(){
     cout<<"Queue Front "<<(q.front)->data<< endl;
     cout<< "Queue Rear "<<(q.rear)->data<<endl;
 }
+
 ```
 
-
-
-
-
+**队列的linked list实现**
 
 
 
