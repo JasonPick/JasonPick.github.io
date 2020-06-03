@@ -21,18 +21,59 @@ categories: ['algorithms']
 
 重要的概念
 
-二叉树不像是
+二叉树不像是链表、栈和队列是线性结构，树是hierachical结构
 
+**二叉树的优点**
+
+* 二叉树适合一些天然的hierarchy结构，像是文件系统  
+* 二叉树提供中等的搜索(快于链表，慢于数组)  
+* 二叉树提供了中等的插入操作(快于数组，慢于链表)  
+* 二叉树像是链表那样使用指针指向结点，因此没有结点数上线  
+
+```c++
+struct node  
+{ 
+  int data; 
+  struct node *left; 
+  struct node *right; 
+};
+```
 * **高度**:最长路径的边的个数
 
 ### 1.1 特殊的二叉树
 
-{: .box-note}
- **Full binary tree满二叉树**：一个节点只能有0或者2个节点  
- **Complete binary tree完全二叉树**：除了最下层全满，最下层所有叶子结点向左边靠拢   
 
+
+ * **Full binary tree**：一个节点只能有0或者2个节点  
+ 
+ {: .box-note}
+ 
+              18  
+            /     \    
+          40       30    
+                   /  \  
+                 100   40  
+		 
+ * **Complete binary tree**：除了最下层全满，最下层所有叶子结点向左边靠拢   
+ 
+              18  
+           /       \    
+         15         30    
+        /  \        /  \  
+      40    50    100   40  
+     /  \   /  
+    8   7  9   
+    
+ * **Perfect binary tree**：所有中间结点都有两个子结点，并且所有叶子结点都在同一层   
+ 
+              18  
+           /       \    
+         15         30    
+	 
+ * **Balanced Binary Tree** 平衡二叉树保证了O(Log n)的高度，左子树和右子树的最大高度差最大为1
 
 ### 1.2 完全二叉树
+
 完全二叉树是 _堆_ 的底层实现
 
 堆的时间复杂度表如下
@@ -156,11 +197,20 @@ struct node* search(int data) {
 
 * 二叉树的遍历
 
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/2009/06/tree12.gif)
+
+前序遍历：4 2 5 1 3  
+中序遍历：1 2 4 5 3  
+后序遍历：4 5 2 3 1  
+
 {: .box-warning}
 
  1.前序遍历 [144 Binary Tree Preorder Traversal ](https://leetcode.com/problems/binary-tree-preorder-traversal/)  
  2.中序遍历[94 Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)  
  3.后序遍历[145 Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)  
+ 
+ 重要！！！
+ 
 
 * 二叉树的层序遍历
 
