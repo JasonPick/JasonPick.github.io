@@ -9,8 +9,20 @@ categories: ['algorithms']
 在这里我们讨论的树有二叉树、二叉搜索树、平衡二叉树、红黑树。其中我们主要给出二叉树的结构，二叉搜索树的相关题目的分析以及针对红黑树的问答题。
 ## 1.二叉树
 
+一个二叉树结点主要包含三个部分：
+
+1.Data
+
+2.Pointer to left child
+
+3.Pointer to right child
+
 ![二叉树图示](https://www.tutorialspoint.com/data_structures_algorithms/images/binary_tree.jpg)
+
 重要的概念
+
+二叉树不像是
+
 * **高度**:最长路径的边的个数
 
 ### 1.1 特殊的二叉树
