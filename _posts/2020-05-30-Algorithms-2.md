@@ -1,11 +1,22 @@
 ---
 layout: post
 title: 队列专题
-subtitle: Each post also has a subtitle
+subtitle: Part 1：栈和队列
 tags: [algorithms, queue]
 comments: true
 categories: ['algorithms']
 ---
+
+在这里我们讨论队列，因为栈和队列的相似性，我们将在这一部分将它们对比讨论。在下一部分我们将讨论优先队列。
+
+# 1. 队列
+
+一个队列是一个线性结构，并且遵循 **先进先出(FIFO)** 的顺序。  
+
+
+
+
+两个栈实现一个队列
 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
