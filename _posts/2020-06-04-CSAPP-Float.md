@@ -16,7 +16,7 @@ categories: ['Basic Knowledge']
 
 我们可以使用如下这种方法来表示浮点数
 
-![浮点数的表示](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/img/float_representation_1.jpeg)
+![浮点数的表示](https://github.com/JasonPick/JasonPick.github.io/blob/master/assets/img/blog/float_representation_1.jpeg)
 
 可是这样的表示方法有一些缺点：
 1. 只能表示 x/2^k 的数
