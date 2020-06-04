@@ -28,7 +28,7 @@ Front:获取队首元素。
 
 Rear:获取队尾元素。
 
-![](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/img/queue_picture.jpeg)
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/Queue.png)
 
 **队列的应用**
 
