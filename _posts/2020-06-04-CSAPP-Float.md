@@ -12,7 +12,7 @@ categories: ['Basic Knowledge']
 
 ## 浮点数的表示
 
-### 浮点数的一种表示方法
+**浮点数的一种表示方法**
 
 我们可以使用如下这种方法来表示浮点数
 
@@ -29,7 +29,7 @@ categories: ['Basic Knowledge']
 
 我们使用如下方法表示浮点数
 
-![浮点数的公式](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/img/float_form.jpeg)
+![浮点数的公式](https://drive.google.com/file/d/1oJvAFBbpzc65mdM7Wp1EWIu2yNoDCZb-/view?usp=sharing)
 
 其中：S 是符号位， M 在\[1.0,2.0]之间，E 是指数位
 
