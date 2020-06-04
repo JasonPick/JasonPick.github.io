@@ -87,6 +87,47 @@ float表示数据的范围
 
 ![](/assets/img/blog/float_num_range.JPG)
 
+靠近0的数分布比较密集，exp每增加1，距离就增加一倍。
+
+## 浮点数的操作
+浮点数可以进行加法和乘法。虽然计算机中的浮点数和真的浮点数很相似，但是计算机中的浮点数还是与真的浮点数不同。
+
+浮点数的加法和乘法操作如果超出了范围则需要 Round() 操作来适合范围。其中 Round 可以是向0取值、向-∞取值、向∞取值和偶数取值。
+
+### 浮点数的乘法
+先相乘再进行fit操作
+
+相乘操作
+
+{:.box-note}
+S = S1 ^ S2  
+M = M1 * M2  
+E = E1 + E2  
+
+fit操作
+
+{:.box-note}
+M >= 2,向右移动 M 使得 M 在 0.0，1.0，2.0之间   
+E 超出来范围，那么就是溢出   
+Round(M) 来适应范围。
+
+### 浮点数的加法
+先对齐再相加
+
+浮点数的加法不满足结合律
+
+浮点数的乘法不满足结合律和分配律
+
+尤其是当两个数的差值巨大的时候，大数与小数向加为大数。
+
+### cast 操作
+对于 int 和 unsigned 进行cast的时候，我们并没有改变数的本身，而是改变我们看待它的方式。
+
+对于 int, double, float 进行cast会改变数的值
+
+double/float -> int:  
+* float: 23 bits 
+* 
 
 ## Boxes
 You can add notification, warning and error boxes like this:
