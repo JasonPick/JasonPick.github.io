@@ -126,24 +126,16 @@ Round(M) 来适应范围。
 对于 int, double, float 进行cast会改变数的值
 
 double/float -> int:  
-* float: 23 bits 
-* 
+* float: 23 bits 可以直接截去 frac 的部分  
+* double: 52 bits rounding to fit int  
 
-## Boxes
-You can add notification, warning and error boxes like this:
 
-### Notification
+int -> double/float:  
+* float: 先 round 一下
+* double: 直接转换  
 
-{: .box-note}
-**Note:** This is a notification box.
+### 课后练习
 
-### Warning
+![](/assets/img/blog/float_exercise.JPG)
 
-{: .box-warning}
-**Warning:** This is a warning box.
-
-### Error
-
-{: .box-error}
-**Error:** This is an error box.
 
