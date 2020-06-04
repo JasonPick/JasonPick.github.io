@@ -32,49 +32,49 @@ categories: ['algorithms']
 
 {: .box-warning}
 
-   1. [141 Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)    
-   2. [142 Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)   
+   1.链表环 [141 Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)    
+   2.链表环2[142 Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)   
 
 * 链表排序
 
 {: .box-warning}
 
-   1. [148 Sort List](https://leetcode.com/problems/sort-list/)    
-   2. [147 Insertion Sort List](https://leetcode.com/problems/insertion-sort-list/)    
+   1.排序列表 [148 Sort List](https://leetcode.com/problems/sort-list/)    
+   2.排序列表反转 [147 Insertion Sort List](https://leetcode.com/problems/insertion-sort-list/)    
 
 
 * 链表操作
 
 {: .box-warning}
 
-   1. [143 Reorder List](https://leetcode.com/problems/reorder-list/)    
-   2. [61 Rotate List](https://leetcode.com/problems/rotate-list/)      
-   3. [86 Partition List](https://leetcode.com/problems/partition-list/)    
-   4. [328 Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/)  
-   5. [725 Split Linked List in Parts](https://leetcode.com/problems/split-linked-list-in-parts/)    
-   6. [234 Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)      
+   1. 重新排序列表[143 Reorder List](https://leetcode.com/problems/reorder-list/)    
+   2. 旋转列表[61 Rotate List](https://leetcode.com/problems/rotate-list/)      
+   3. 切分列表[86 Partition List](https://leetcode.com/problems/partition-list/)    
+   4. 奇偶链表[328 Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/)  
+   5. 把链表分成几部分[725 Split Linked List in Parts](https://leetcode.com/problems/split-linked-list-in-parts/)    
+   6. 回文链表[234 Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)      
 
 * 进位加法
 
 {: .box-warning}
 
-   1. [2 Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)    
-   2. [445 Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/)    
+   1. 两数之和[2 Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)    
+   2. 两数之和2[445 Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/)    
 
 * 链表合并
 
 {: .box-warning}
 
-   1. [21 Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)    
-   2. [23 Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)    
-   3. [160 Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)    
+   1. 合并两个排序列表[21 Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)    
+   2. 合并k个排序列表[23 Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)    
+   3. 两个链表相交[160 Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)    
 
 * 其他
 
 {: .box-warning}
 
-   1. [138 Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)   
-   2. [109 Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)    
+   1. 随机指针拷贝列表[138 Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)   
+   2. 把排序列表转化为BST[109 Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)    
 
 
 
