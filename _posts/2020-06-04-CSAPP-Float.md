@@ -16,7 +16,7 @@ categories: ['Basic Knowledge']
 
 我们可以使用如下这种方法来表示浮点数
 
-![浮点数的表示](https://github.com/JasonPick/JasonPick.github.io/blob/master/assets/img/blog/float_representation_1.JPG)
+![浮点数的表示](/assets/img/blog/float_representation_1.JPG)
 
 可是这样的表示方法有一些缺点：
 1. 只能表示 x/2^k 的数
@@ -29,13 +29,13 @@ categories: ['Basic Knowledge']
 
 我们使用如下方法表示浮点数
 
-![浮点数的公式](https://github.com/JasonPick/JasonPick.github.io/blob/master/assets/img/blog/float_form.JPG)
+![浮点数的公式](/assets/img/blog/float_form.JPG)
 
 其中：S 是符号位， M 在\[1.0,2.0]之间，E 是指数位
 
 我们用下图表示浮点数：
 
-![浮点数图示](https://github.com/JasonPick/JasonPick.github.io/blob/master/assets/img/blog/float_representation_2.JPG)
+![浮点数图示](/assets/img/blog/float_representation_2.JPG)
 
 
 
