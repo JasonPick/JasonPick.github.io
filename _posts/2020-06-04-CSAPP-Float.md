@@ -37,6 +37,55 @@ categories: ['Basic Knowledge']
 
 ![浮点数图示](/assets/img/blog/float_representation_2.JPG)
 
+浮点数有单精度浮点数和双精度浮点数：
+
+* 单精度浮点数
+
+![](/assets/img/blog/float_representation_3.JPG)
+
+* 双精度浮点数
+
+![](/assets/img/blog/double_representation.JPG)
+
+### Normalized Values
+
+条件：exp != 0000...0 && exp != 1111...1
+
+E = Exp - Bias  
+
+其中 EXP 是 exp 的无符号值  
+Bias = 2^(k-1) -1 (32bits: 127, 64bits: 1023)  
+M = 1.xxxx...x (相应的 frac = xxxx...x)  
+
+举个例子：
+![](/assets/img/blog/float_example_1.JPG)
+
+其中 Exp 的取值范围为：
+![](/assets/img/blog/float_exp_range.JPG)
+
+### Denormalized Values
+
+条件：exp = 0000...0
+
+E = 1 - Bias
+
+M = 0.xxxx...x
+
+* exp = 0000...0 && frac = 0000...0 表示 0 这个数。+0 and -0
+
+* exp = 0000...0 && frac != 0000...0 表示靠近0的 denormalized values
+
+### Special Values
+
+* exp = 1111...1, frac = 0000...0, 表示无穷大∞
+
+* exp = 1111...1, frac != 0000...0, 表示 NAN (∞ - ∞ 或者 ∞ * 0 )
+
+### Summary 
+
+float表示数据的范围
+
+![](/assets/img/blog/float_num_range.JPG)
 
 
 ## Boxes
