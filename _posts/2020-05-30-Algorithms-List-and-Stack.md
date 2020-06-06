@@ -194,7 +194,34 @@ int main(){
 
 
 
-两个栈实现一个队列
+
+**2.2 二叉树习题列表**
+
+
+
+* 栈
+
+
+{: .box-warning}
+
+1. 判断括号是否合法[20 Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)  
+2. 最长合法的括号[32 Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)  
+3. 用两个栈实现队列[232 Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)  
+4. 用两个队列实现栈[225 Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)  
+5. 最小栈[155 Min Stack](https://leetcode.com/problems/min-stack/)  
+6. 逆波兰表达式求值[150 Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)  
+7. 包含加减运算的表达式计算[224 Basic Calculator](https://leetcode.com/problems/basic-calculator/)  
+8. 简化Unix目录路径[71 Simplify Path](https://leetcode.com/problems/simplify-path/)  
+9. 直方图的最大面积[84 Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)  
+10. 去除重复字符[16 Remove Duplicate Letters](https://leetcode.com/problems/3sum-closest/)  
+11. 栈的压入、弹出序列：判断栈的压栈、弹栈序列是否合法[《剑指》面试题22](https://www.nowcoder.com/questionTerminal/d77d11405cc7470d82554cb392585106)   
+
+
+ 
+ 重要！！！
+ 
+
+
 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
