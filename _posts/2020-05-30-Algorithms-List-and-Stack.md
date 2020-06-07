@@ -281,9 +281,9 @@ int main(){
 
 **Solutions**
 
-{: .box-error}
 
-[20 Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/20.valid_parentheses.cpp)        
+
+[20 Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/20.valid_parentheses.cpp)          
 [32 Longest Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/32.longest_valid_parentheses.cpp)    
     
 [232 Implement Queue using Stacks](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/232.implement_queue_using_stack.cpp)     
