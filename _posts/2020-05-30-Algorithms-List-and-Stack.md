@@ -195,11 +195,15 @@ int main(){
 
 
 
-**2.2 二叉树习题列表**
+**2.2 队列习题列表**
 
 
 
-* 栈
+* 栈  
+
+
+常见栈的应用场景包括括号问题的求解，表达式的转换和求值，函数调用和递归实现，深度优先搜索遍历等；  
+常见的队列的应用场景包括计算机系统中各种资源的管理，消息缓冲器的管理和广度优先搜索遍历等。  
 
 
 {: .box-warning}
@@ -217,11 +221,89 @@ int main(){
 11. 栈的压入、弹出序列：判断栈的压栈、弹栈序列是否合法[《剑指》面试题22](https://www.nowcoder.com/questionTerminal/d77d11405cc7470d82554cb392585106)   
 
 
- 
- 重要！！！
- 
+
+* 其他
 
 
+{:.box-warning}
+
+1. LRU缓存的实现[](https://leetcode.com/problems/lru-cache/)  
+
+
+
+20 合法的括号
+
+思路：
+  
+非常符合栈的结构，我们遇到左括号将相应的右括号全部压入栈中，如果遇到右括号判断当前栈是否为空或者栈顶元素是否等于当前元素，如果不是那么返回false，最后循环结束，判断一下栈是否为空
+
+
+32.最长的合法括号
+
+思路：
+
+还是同上题一样，用栈来做，这次，我们用index压入栈中，具体例子如下。
+![](/assets/img/blog/Longest_valid_parenthese.JPG)
+
+
+232.225.用栈实现队列 用队列实现栈
+
+思路：  
+
+ 栈实现队列，两个栈一个用于输入一个用于输出。  
+ 队列实现栈，使用一个队列实现栈，在压入队列之后对整个队列进行反转。  
+
+
+155.最小栈
+
+思路：
+
+使用两个stack的话，就一个stack负责保存最小值，如果push的值小于最小值或者s2为空，那么push进s2，如果pop的值为最小值，那么s2也pop。  
+如果使用一个栈的话，单独加一个最小值变量，如果push的值小于最小值那么，stack push之前的最小值，保留新的最小值在外面，如果pop的值为最小值，那么改变最小值，再pop一次。  
+
+
+150.逆波兰表达式
+
+思路：
+
+显示的使用栈：从左向右像扫描，如果遇到数字push进satck中，如果遇到operator就pop，pop出的第一个数是y，第二个数是x，x operator y，再把结果push进stack中区
+
+
+224.简单计算器 hard
+
+思路：
+![](https://github.com/JasonPick/JasonPick.github.io/blob/master/assets/img/blog/basic_calculator.JPG)
+
+
+
+* 递归：层序遍历和自底向上遍历使用递归，一个helper函数，传入res, level, node， 边界条件node为空return，如果level>=res.size那么在res中加入新的行，将当前val加入res\[level\]中，左循环，右循环。如果是自底向上的遍历，在返回之前对res进行reverse。  
+* 循环：之字形遍历使用循环遍历，创造一个queue，将root加入queue中，while循环queue不为空的时候，定义一个新的vector存储这一层的值,弹出queue.front(),queue pop一下，如果flag==0从尾部插入，如果flag==1从头部插入，左子结点加入queue，右子结点加入queue。
+
+**Solutions**
+
+{: .box-error}
+
+1.[20 Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/20.valid_parentheses.cpp)      
+2.[32 Longest Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/32.longest_valid_parentheses.cpp)  
+  
+3.[232 Implement Queue using Stacks](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/232.implement_queue_using_stack.cpp)   
+  
+4.[225 Implement Stack using Queues](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/22.implement_stack_using_queue.cpp)   
+  
+5.[155 Min Stack](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/155.min_stack.cpp)   
+    
+6.[150 Evaluate Reverse Polish Notation](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/150.Reverse_polish_.formula.cpp)   
+  
+7.[224 Basic Calculator](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
+8.[71 Simplify Path](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
+  
+9.[84 Largest Rectangle in Histogram](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
+  
+10.[16 Remove Duplicate Letters](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
+
+11. [《剑指》面试题22](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
+
+ 
 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
