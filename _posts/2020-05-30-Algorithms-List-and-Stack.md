@@ -283,25 +283,25 @@ int main(){
 
 {: .box-error}
 
-1.[20 Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/20.valid_parentheses.cpp)      
-2.[32 Longest Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/32.longest_valid_parentheses.cpp)  
-  
-3.[232 Implement Queue using Stacks](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/232.implement_queue_using_stack.cpp)   
-  
-4.[225 Implement Stack using Queues](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/22.implement_stack_using_queue.cpp)   
-  
-5.[155 Min Stack](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/155.min_stack.cpp)   
+[20 Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/20.valid_parentheses.cpp)        
+[32 Longest Valid Parentheses](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/32.longest_valid_parentheses.cpp)    
     
-6.[150 Evaluate Reverse Polish Notation](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/150.Reverse_polish_.formula.cpp)   
+[232 Implement Queue using Stacks](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/232.implement_queue_using_stack.cpp)     
+    
+[225 Implement Stack using Queues](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/22.implement_stack_using_queue.cpp)   
+    
+[155 Min Stack](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/155.min_stack.cpp)   
+      
+[150 Evaluate Reverse Polish Notation](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/150.Reverse_polish_.formula.cpp)   
+    
+[224 Basic Calculator](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)         
+[71 Simplify Path](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
+      
+[84 Largest Rectangle in Histogram](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
+      
+[16 Remove Duplicate Letters](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
   
-7.[224 Basic Calculator](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
-8.[71 Simplify Path](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
-  
-9.[84 Largest Rectangle in Histogram](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
-  
-10.[16 Remove Duplicate Letters](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
-
-11. [《剑指》面试题22](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)     
+[《剑指》面试题22](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
 
  
 
