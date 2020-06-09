@@ -217,7 +217,7 @@ int main(){
 7. 包含加减运算的表达式计算[224 Basic Calculator](https://leetcode.com/problems/basic-calculator/)  
 8. 简化Unix目录路径[71 Simplify Path](https://leetcode.com/problems/simplify-path/)  
 9. 直方图的最大面积[84 Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)  
-10. 去除重复字符[16 Remove Duplicate Letters](https://leetcode.com/problems/3sum-closest/)  
+10. 去除重复字符[316 Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)  
 11. 栈的压入、弹出序列：判断栈的压栈、弹栈序列是否合法[《剑指》面试题22](https://www.nowcoder.com/questionTerminal/d77d11405cc7470d82554cb392585106)   
 
 
@@ -279,6 +279,95 @@ int main(){
 * 递归：层序遍历和自底向上遍历使用递归，一个helper函数，传入res, level, node， 边界条件node为空return，如果level>=res.size那么在res中加入新的行，将当前val加入res\[level\]中，左循环，右循环。如果是自底向上的遍历，在返回之前对res进行reverse。  
 * 循环：之字形遍历使用循环遍历，创造一个queue，将root加入queue中，while循环queue不为空的时候，定义一个新的vector存储这一层的值,弹出queue.front(),queue pop一下，如果flag==0从尾部插入，如果flag==1从头部插入，左子结点加入queue，右子结点加入queue。
 
+
+71.简化路径
+
+思路：
+
+
+* 通过‘/’来分开各个string，对于每个string来说，如果是’.‘或者为空就跳过，如果是'..'就返回pop，其他情况就push，最后遍历整个stack返回string。
+
+* 学习到了 stringstream s(path)
+
+    istream& getline (istream&  is, string& str, char delim);可以将整个字符串split by delim.
+
+
+84. 求直方图的最大矩形面积
+
+思路：
+
+
+* 通过设置一个栈存储直方图的，首先push第一个元素进栈，然后如果h>栈顶，那么push进栈，反之，pop栈顶的元素，将栈顶height作为高，i-pop-1后栈顶元素作为高来与当前面积求取最大值。本题要特别注意边界条件，尤其是数组遍历完，栈不为空的状况。
+
+```c++
+
+int largestRectangleArea(vector<int>& heights) {
+        int sz = heights.size();
+        stack<int> pos;
+        int res = 0;
+
+        for (int i = 0; i <= sz;i++){
+
+            int h = (i == sz? 0: heights[i]);
+
+            if(pos.empty()||h >= heights[pos.top()]){
+                
+                pos.push(i);
+                
+            }else{
+                int p = pos.top();
+                pos.pop();
+                res = max(res,heights[p]*(pos.empty()?i:i-1-pos.top()));
+                i--;
+
+            }
+        }
+        return res;
+        
+    }
+
+
+```
+
+
+316.去除重复字符
+
+思路：
+
+
+* 先遍历一遍str，记录下来每个字母出现的字数，借助一个visited数组，记录每个字母有没有访问过。
+ 再重新遍历一遍index = c-'a',如果这个字符遍历过那么跳过。如果栈不为空并且当前的字母小于栈中的字母且这个字母在之后还会出现，那么弹出栈中的字母，加入当前的字母。最后逐一弹出栈。
+ 
+面试题22
+
+思路：
+
+
+* 将pushV的每个元素压入辅助栈中，在辅助栈中判断back与popV的第j(j初始化为0)个元素是否相等，如果相等，可以从辅助栈中pop最后一个元素，j++。否则，在栈中继续push元素。最后检查栈是否为空。
+
+
+```c++
+bool IsPopOrder(vector<int> pushV,vector<int> popV) {
+        //bool res = false;
+        if(!pushV.size() || !popV.size()) return true;
+        
+        vector<int> stack;
+        int j = 0;
+        
+        for(int item: pushV ){
+            stack.push_back(item);
+            while(stack.size() && stack.back() == popV[j]){
+                stack.pop_back();
+                j++;
+            }
+        }
+        
+        return stack.empty();
+        
+    }
+```
+
+
 **Solutions**
 
 
@@ -295,81 +384,12 @@ int main(){
 [150 Evaluate Reverse Polish Notation](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/150.Reverse_polish_.formula.cpp)   
     
 [224 Basic Calculator](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)         
-[71 Simplify Path](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
+[71 Simplify Path](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/71.simplify_path.cpp)       
       
-[84 Largest Rectangle in Histogram](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
+[84 Largest Rectangle in Histogram](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/84.Largest_rectangle_in_Histogram.cpp)       
       
-[16 Remove Duplicate Letters](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
+[316 Remove Duplicate Letters](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/316.remove_duplicate_letters.cpp)       
   
-[《剑指》面试题22](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/224.basic_calculator.cpp)       
+[《剑指》面试题22](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/queue/22.pushV_popV.cpp)       
 
  
-
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
-
-**Here is some bold text**
-
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
-
-
-How about a yummy crepe?
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
-
-It can also be centered!
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
-
-Here's a code chunk:
-
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
-
-And here is the same code with syntax highlighting:
-
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-```
-
-And here is the same code yet again but with line numbers:
-
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
-
-## Boxes
-You can add notification, warning and error boxes like this:
-
-### Notification
-
-{: .box-note}
-**Note:** This is a notification box.
-
-### Warning
-
-{: .box-warning}
-**Warning:** This is a warning box.
-
-### Error
-
-{: .box-error}
-**Error:** This is an error box.
