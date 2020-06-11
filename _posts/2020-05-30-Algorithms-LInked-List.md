@@ -65,12 +65,43 @@ Access O(n), Insert O(1), Delete O(1)
 
 * circular links:循环链接列表是一个链接列表，其中所有节点都连接到一个圆圈。末尾没有 NULL。循环链接列表可以是单个循环链接列表或双循环链接列表。
 
-* 
+ ![](https://media.geeksforgeeks.org/wp-content/uploads/CircularLinkeList.png)
+   * 优点：
+
+     *  任何节点都可以是起点。我们可以从任何点开始遍历整个列表。当再次访问第一个访问节点时，我们只需要停止。
+
+     *  可用于实现队列，不需要维护前后两个指针。我们可以维护指向最后一个插入节点的指针，并且始终可以作为最后一个节点获取前面的指针。
+
+     *  循环列表可以反复进入列表，在应用程序中很有用。例如，当多个应用程序在 PC 上运行时，操作系统通常将正在运行的应用程序放在列表中，然后循环浏览它们，为每个应用程序提供一段执行时间，然后在将 CPU 提供给另一个应用程序时让它们等待。操作系统使用循环列表很方便，这样当它到达列表末尾时，它可以循环到列表的前面。
+
+     *  循环双链接列表用于实现高级数据结构，如斐波那契堆。
+ 
+ 
+
+* Doubly list 双向链表：双链接列表 （DLL） 包含一个前向指针，以及单独链表中的后向指针指针和数据。
+
+  ![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/03/DLL1.png)
+  
+  * 优点
+  
+    *  DLL 可以向前和向后遍历。
+    
+    *  如果给定指向要删除的节点的指针，则 DLL 中的删除操作将更为高效。也可以在给定节点之前快速插入新节点。
+    
+    *  在单链表中，要删除节点，需要指向前一个节点的指针。要获取此上一个节点，有时将遍历列表。在 DLL 中，我们可以使用前向指针获取上一个节点。
+
 
 
 
 
 ### 习题列表
+
+
+* dummy 用于可能会删除head的情况
+
+* 双指针法也是经常经常使用的
+
+
 * 链表删除
 
 {: .box-warning}
@@ -136,6 +167,88 @@ Access O(n), Insert O(1), Delete O(1)
 
    1. 随机指针拷贝列表[138 Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)   
    2. 把排序列表转化为BST[109 Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)    
+
+
+
+203.给定值删除链表中的元素
+
+思路：
+
+
+* prev -> next = prev->next->next。
+
+* 注意:删除掉next结点的话就不用prev = prev.next了，删除结点时prev.next发生变化所以不用做什么，只有不删除时才向后移动，否则有可能空指针！
+
+
+19.从末尾移除第n个结点
+
+思路：
+ 
+ 利用双指针定位。先用一个fast指针走n步，然后slow指针与fast指针同步，当fast走到链表末尾的时候，slow指针即为倒数第n个结点。
+ 
+ 
+83.从排序的列表中去除重复的元素：
+
+思路：
+
+
+* 第一种向后比较结点，发现重复就删掉。与203一样要注意删掉next结点的话就不用 cur = cur-> next;
+
+* 第二种向前比较结点，prev记录前一个结点的值，相同就删掉当前结点。注意prev和cur的更新 prev = cur， cur = cur->next。
+
+
+82.移除重复的元素
+
+思路：
+
+
+与83题不同，题目要求删除所有重复结点，不保留。所以while循环里还要嵌套循环，一旦发现duplicate全部删除。
+
+
+206 反转链表
+
+思路：
+
+* 迭代方法：用一个 pre保存前一个node，一个cur保存现在的Node,cur->next = pre，并且将pre和cur更新。
+
+* 递归方法：用一个helper函数, 传入head 和 newHead,不断将head->next 指向newhead,并向下递归 helper(nxt,head);
+
+
+92 反转链表II
+
+思路：
+
+
+* 先找到要插入的位置m的前一个结点，记录start = prev,end = prev->next;反转链表，将反转后的部分重新连接进入链表中。
+
+* start->next = prev,end->next = curr
+
+
+举个例子 1->2->3->4->5 m = 2, n = 4
+
+首先找到想要反转的队列的前一个值，我们找到了1，此时prev->1,curr->2;
+
+记录此时的prev为start,记录此时的curr为end。逐一反转m到n
+
+我们重新连接链表 此时反转部分是 4->3->2，其中4是循环后的prev，5是循环后的start。将start->next连接到prev上(1->4),将end->next连接到curr上(2->5)。
+
+
+24.成对旋转结点
+
+思路：
+
+
+* 逐一反转，借助dummy，设置一个prev结点，记录当前head为A，head->next为B。是的prev指向B，B->A。继续迭代pre = A，A->next = B->next,head = A->next
+
+
+25.k个一组旋转结点
+
+
+
+
+
+
+
 
 
 
