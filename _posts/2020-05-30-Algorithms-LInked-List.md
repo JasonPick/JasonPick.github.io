@@ -243,14 +243,56 @@ Access O(n), Insert O(1), Delete O(1)
 
 25.k个一组旋转结点
 
+思路：
+
+
+* 辅助变量dummy，prev,end;首先找到第一个kgroup迭代end，如果元素个数小于k那么直接break；start = prev->next,end = end->next.
+
+* 切分链表，[start,end]是我们要反转的区间，end->next = nullptr；逐一反转
+
+* 重新拼接，start->next = nxt, prev->next = reverse(start)
+
+* 新的迭代 prev = start, end = start;新的一轮迭代
+
+
+141.链表环
+
+思路：
+
+
+* 双指针法最为直接，一个fast指针走两步，一个slow指针走一步。两个指针如果相遇，那么存在环
+
+
+142.链表环II
+
+思路：
+
+
+* 双指针法先判断是否有环，如果有环，初始化另一个指针temp = head;与slow同步走，当二者相遇时候，这时的slow就是入环的起点。
+
+
+148.链表排序
+
+思路：
+
+
+* mergesort，首先先将链表分为两部分，采用双指针法，左边头结点是head，尾结点是temp，右边的头结点是slow，尾结点是fast。
+
+* 第二步，合并左右部分。如果左边的值小于右边，curr->next = l,l = l->next否则curr->next = r;如果l不为空或者r不为空，直接连接。
 
 
 
+147.链表插入排序
+
+思路：
 
 
+* 插入排序的步骤，向后遍历，如果有值小于当前值，那么先删除这个结点
+
+* 然后从左向右遍历，找到一个合适的位置插入。
 
 
-
+143.
 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
