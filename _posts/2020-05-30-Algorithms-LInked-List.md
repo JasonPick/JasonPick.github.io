@@ -292,7 +292,67 @@ Access O(n), Insert O(1), Delete O(1)
 * 然后从左向右遍历，找到一个合适的位置插入。
 
 
-143.
+143.重新排序链表
+
+
+Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+思路：
+
+
+* 先partition 分为两部分，左边部分head,temp分别为头结点尾结点，右边部分slow,fast分别为头结点尾结点。
+
+* 再reverse后半部分；
+
+* 最后merge两个list
+
+
+61.旋转链表
+
+
+Input: 1->2->3->4->5->NULL, k = 2
+Output: 4->5->1->2->3->NULL
+
+思路：
+
+
+* 第一种思路是参考array 旋转思路：先reverse 整个array，再把array 分成两个部分，reverse前k个，再reverse后面的。
+
+* 第二种思路是针对链表的，找到尾结点，将尾结点与首结点相连形成一个环。设置m = count-k-1,找到m的位置，在这个位置后面切断链表
+
+
+
+86.切分链表
+
+Input: head = 1->4->3->2->5->2, x = 3
+Output: 1->2->2->4->3->5
+
+思路：
+
+
+*  分别建立小于x的list和大于等于x的list，再合并两个list
+
+
+328.奇偶链表
+
+这里的奇偶不是指数的值，而是在链表中的位置
+
+
+Input: 1->2->3->4->5->NULL
+Output: 1->3->5->2->4->NULL
+
+思路：
+
+* 分别构建奇链表和偶链表，再连接两个链表
+
+
+725.把
+
+
+
+
+
 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
