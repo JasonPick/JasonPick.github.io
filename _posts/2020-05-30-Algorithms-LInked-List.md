@@ -205,6 +205,16 @@ Access O(n), Insert O(1), Delete O(1)
 与83题不同，题目要求删除所有重复结点，不保留。所以while循环里还要嵌套循环，一旦发现duplicate全部删除。
 
 
+
+**Solutions**
+
+{: .box-error}
+
+移除链表中的元素 [203 Remove Linked List Elements](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/203.Remove_linked_list_element.cpp)      
+从末尾移除第N个结点 [19 Remove Nth Node From End of List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/19.Remove_Nth_Node_from_the_end_of_link.cpp)    
+从排序的列表里移除重复的元素 [83 Remove Duplicates from Sorted List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/83.Remove_Duplicates_from_sorted_list.cpp)      
+移除重复的元素 [82 Remove Duplicates from Sorted List II ](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/82.Remove_duplicates.cpp)    
+
 206 反转链表
 
 思路：
@@ -255,6 +265,17 @@ Access O(n), Insert O(1), Delete O(1)
 * 新的迭代 prev = start, end = start;新的一轮迭代
 
 
+
+**Solutions**
+
+{: .box-error}
+
+反转链表 [206 Reverse Linked List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/206.Reverse_link_list.cpp)     
+反转链表II [92 Reverse Linked List II](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/92.Reverse_LInk_List_2.cpp)      
+成对旋转结点 [24 Swap Nodes in Pairs](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/24.swap_nodes_in_pairs.cpp)      
+k个一组旋转链表 [25 Reverse Nodes in k-Group](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/25.reverse_node_in_k_groups.cpp)    
+  
+
 141.链表环
 
 思路：
@@ -291,6 +312,19 @@ Access O(n), Insert O(1), Delete O(1)
 
 * 然后从左向右遍历，找到一个合适的位置插入。
 
+
+
+**Solutions**
+
+{: .box-error}
+
+链表环 [141 Linked List Cycle](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/141.Linked_list_circle.cpp)    
+链表环2[142 Linked List Cycle II](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/142.Linked_list_cycle2.cpp)      
+排序列表 [148 Sort List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/148.SortList.cpp)    
+排序列表反转 [147 Insertion Sort List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/147.Insertion_sort_list.cpp)    
+ 
+  
+  
 
 143.重新排序链表
 
@@ -370,6 +404,20 @@ Output: true
 
 * 首先将链表分为两部分，其次将后半部分反转，最后比较两部分的值，如果不行等则false
 
+
+
+**Solutions**
+
+{: .box-error}
+
+重新排序列表[143 Reorder List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/143.Reorder_link_list.cpp)    
+旋转列表[61 Rotate List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/61.Rotate_list.cpp)      
+切分列表[86 Partition List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/86.Partition_link_list.cpp)    
+奇偶链表[328 Odd Even Linked List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/328.Odd_Even_link.cpp)  
+把链表分成几部分[725 Split Linked List in Parts](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/725.split_link_list_in_parts.cpp)    
+回文链表[234 Palindrome Linked List](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/link/234.Palindrome_link_list.cpp)      
+
+ 
 
 2.两数之和
 
@@ -533,11 +581,17 @@ Output: 7 -> 8 -> 0 -> 7
 
 
 
+**Solutions**
 
+{: .box-error}
 
-
-
-
+两数之和[2 Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)    
+两数之和2[445 Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/)    
+合并两个排序列表[21 Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)     
+合并k个排序列表[23 Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)     
+两个链表相交[160 Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)     
+随机指针拷贝列表[138 Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)    
+把排序列表转化为BST[109 Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)    
 
 
 
