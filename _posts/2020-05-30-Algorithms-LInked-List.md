@@ -336,8 +336,8 @@ Output: 1->2->2->4->3->5
 
 328.奇偶链表
 
-这里的奇偶不是指数的值，而是在链表中的位置
 
+这里的奇偶不是指数的值，而是在链表中的位置
 
 Input: 1->2->3->4->5->NULL
 Output: 1->3->5->2->4->NULL
@@ -347,79 +347,197 @@ Output: 1->3->5->2->4->NULL
 * 分别构建奇链表和偶链表，再连接两个链表
 
 
-725.把
+725.把链表分为几部分
 
 
+Input: root = [1, 2, 3], k = 5
+Output: [[1],[2],[3],[],[]]
+
+思路：
 
 
+* 先初始化一个vector，其中每个链表中有N/k个值，其中前N%k个链表是多一个值的
 
 
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
-
-**Here is some bold text**
-
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
+234.回文链表
 
 
-How about a yummy crepe?
+Input: 1->2->2->1
+Output: true
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
+思路：
 
-It can also be centered!
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
+* 首先将链表分为两部分，其次将后半部分反转，最后比较两部分的值，如果不行等则false
 
-Here's a code chunk:
 
-~~~
-var foo = function(x) {
-  return(x + 5);
+2.两数之和
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+Explanation: 342 + 465 = 807.
+
+思路：
+
+* 从首位逐一相加保存 carry的值，sum%10是新的值，sum/10 更新carry。如果其中一个list遍历完了，将值设置为0；最后如果carry不为0增加一位。
+
+
+445.反序的两数之和
+
+
+不可以使用reverse
+
+Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 8 -> 0 -> 7
+
+思路：
+
+
+* 用stack解法,隐式使用stack，先算出list1和list2的长度，然后逐一相加,这一段处理妙啊！！之后计算carry，创建新的list,值为(carry+tail1->val)/10
+    ~~~
+    while(n1>0 && n2>0){
+            int sum = 0;
+            if(n1>=n2){
+                sum += tail1->val;
+                tail1 = tail1->next;
+                n1--;
+            }
+            if(n1<n2){
+                sum += tail2->val;
+                tail2 = tail2->next;
+                n2--;
+            }
+            res = addToFront(sum,res);
+
+        }
+    ~~~
+* 直接使用stack
+
+
+ ~~~ 
+ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    ListNode dummy = new ListNode(0);
+    ListNode cur = dummy;
+
+    Stack<Integer> stack = new Stack<>();
+    Stack<Integer> s1 = new Stack<>();
+    Stack<Integer> s2 = new Stack<>();
+    while (l1 != null) {
+        s1.push(l1.val);
+        l1 = l1.next;
+    }
+    while (l2 != null) {
+        s2.push(l2.val);
+        l2 = l2.next;
+    }
+
+    int cn = 0;
+    while (!s1.isEmpty() || !s2.isEmpty()) {
+        int val = cn;
+        if (!s1.isEmpty()) {
+            val += s1.pop();
+        }
+        if (!s2.isEmpty()) {
+            val += s2.pop();
+        }
+        // 产生进位cn
+        cn = val / 10;
+        val = val % 10;
+        stack.push(val);
+    }
+
+    // 当l1、l2都到达链表尾且有进位时
+    if (cn != 0) stack.push(cn);
+
+    while (!stack.isEmpty()) {
+        cur.next = new ListNode(stack.pop());
+        cur = cur.next;
+    }
+
+    return dummy.next;
 }
-foo(3)
-~~~
+ ~~~
 
-And here is the same code with syntax highlighting:
+21.合并两个排序链表
 
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-```
+思路：
 
-And here is the same code yet again but with line numbers:
 
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
+* 如果两个都不为空那么先连接数值小的。最后如果其中一个不为空，就全部连接。
 
-## Boxes
-You can add notification, warning and error boxes like this:
 
-### Notification
 
-{: .box-note}
-**Note:** This is a notification box.
 
-### Warning
 
-{: .box-warning}
-**Warning:** This is a warning box.
+23.合并k个排序链表
 
-### Error
+思路：
 
-{: .box-error}
-**Error:** This is an error box.
+
+* 可以使用两个两个一组的合并排序2个链表 O(NK)
+
+* 可以使用优先队列，O(KlogN)
+  
+  * 重新定义优先队列的compare方法
+    ```
+                struct compare
+            {
+                bool operator() (const ListNode* o1, const ListNode* o2) { 
+                    return o1->val > o2->val; 
+                }
+            };
+            
+            priority_queue<ListNode*,vector<ListNode*>,compare> q;
+    
+    ```
+    
+   * 先将list的头结点全部入队，弹出元素node作为下一个结点，如果不为空将node->next也插入队列。
+
+
+160.两个链表相交
+
+思路：
+
+
+* 总体思想是 **a+b = b+a**，我们将pa，pb两个指针分别指向两个list的tou，如果其中一个为空，pa = HeadB，pb = HeadA，直到相遇
+
+
+
+138.随机指针拷贝列表
+
+思路：
+
+* 第一种思路 time O(N) space O(N),round1:借助一个map将所有原来的结点map到空clone上去，round 2: 遍历list，将所有的
+    ```
+    dict[iter]->next = dict[iter->next];
+    dict[iter]->random = dict[iter->random];
+    ```
+
+* 第二种思路 time O(N) space O(1),这次我们不借助任何其他辅助空间。
+
+    * round 1: 遍历list，将所有node->node_nxt转化成为 node->node_clone->node_nxt；
+    
+    * round 2: 遍历list，修改clone的 random指针，将所有 curr->next->random = curr->random->next
+    
+    * round 3: 遍历list,修正next指针，将所有原list与copy list分开
+
+
+
+109.把排序列表转化成BST
+
+思路：
+
+
+* 使用双指针法找到slow，slow是中值，采用中序遍历，左子结点，右子结点分别 递归[head,slow]和[slow->next,fast]
+
+
+
+
+
+
+
+
+
+
+
 
