@@ -245,6 +245,92 @@ struct node* search(int data) {
 16.把二叉树打印成多行[No.60](https://www.nowcoder.com/questionTerminal/445c44d982d04483b04a54f298796288)  
 
 
+* 二叉树的路径
+
+{: .box-warning}
+
+1. 路径和(一)-是否存在二叉树路径和等于给定值（根节点到叶子节点）[112 Path Sum](https://leetcode.com/problems/path-sum/)    
+2. 路径和(二)-二叉树中路径和等于给定值的所有路径（根节点到叶子节点）[113 Path Sum II](https://leetcode.com/problems/path-sum-ii/)   
+3. 路径和(三)-二叉树中路径和等于给定值的所有路径（任意两个节点）[437 Path Sum III](https://leetcode.com/problems/path-sum-iii/)   
+4. 二叉树从根节点到叶子节点的所有路径[257 Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)   
+5. 二叉树中任意两个节点之间路径和的最大值（二叉树的最大路径和）[124 Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)  
+6. 所有“根到叶子”路径和的和[129 Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers/submissions/)     
+7. 二叉树的直径（二叉树任意两个节点之间路径的最大长度）[543 Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)     
+8. 最长相同值路径[687 Longest Univalue Path](https://leetcode.com/problems/longest-univalue-path/)    
+9. [二叉树的最大距离（即相距最远的两个叶子节点）](https://blog.csdn.net/liuyi1207164339/article/details/50898902)   
+
+
+
+* 构建二叉树
+
+{: .box-warning}
+
+1. 先序和中序遍历可以唯一确定一棵二叉树[105 Construct Binary Tree from Preorder and Inorder Traversal]()      
+2. 中序和后序遍历可以唯一确定一棵二叉树[106 Construct Binary Tree from Inorder and Postorder Traversal]()     
+3. 根据二叉树构建字符串[606 Construct String from Binary Tree]()         
+
+
+* 二叉树的序列化和反序列化
+
+{: .box-warning}
+
+[297 Serialize and Deserialize Binary Tree]()
+
+
+* 二叉树的转换
+
+{: .box-warning}
+
+1. 有序数组转换到二叉搜索树[108 Convert Sorted Array to Binary Search Tree]()       
+2. 有序链表转换到二叉搜索树[109 Convert Sorted List to Binary Search Tree]()   
+3. 将二叉树碾平成单链表[114 Flatten Binary Tree to Linked List]()    
+4. [二叉搜索树转换成双向链表]()   
+
+
+* 二叉树的性质
+
+{: .box-warning}
+
+1. 二叉树的最大深度（叶子节点到根节点的距离）[104 Maximum Depth of Binary Tree]()        
+2. 二叉树的最小深度（叶子节点到根节点的距离）[111 Minimum Depth of Binary Tree]()    
+3. 二叉树的最大宽度[662 Maximum Width of Binary Tree]()      
+4. 判断两棵二叉树是否相同[100 Same Tree]()       
+5. 对称的二叉树（二叉树的镜像)[101 Symmetric Tree]()      
+6. 翻转二叉树[226 Invert Binary Tree]()   
+7. 判断二叉树是否为另一个树的子树[572 Subtree of Another Tree]()   
+
+
+
+* 完全二叉树
+
+{: .box-warning}
+
+1.[222 Count Complete Tree Nodes]()  
+2.[判断完全二叉树：判断二叉树是否为完全二叉树]()  
+3.[阿里面试题：求完全二叉树的最后一层的最后一个节点]()  
+
+
+* 平衡二叉树
+
+{: .box-warning}
+
+1. 判断二叉树是否为平衡二叉树[110 Balanced Binary Tree]()     
+
+
+* 二叉搜索树
+
+{: .box-warning}
+
+1. 判断二叉树是否为二叉搜索树[98 Validate Binary Search Tree]()   
+2. 恢复错误的二叉搜索树[99 Recover Binary Search Tree]()   
+3. 给定一个数n，求1-n这n个数能生成多少个二叉搜索树[96 Unique Binary Search Trees]()   
+4. 给出一个n，求1-n能够得到的所有二叉搜索树，输出所有树[95 Unique Binary Search Trees II]()   
+5. 二叉搜索树的第k个节点（第k小的数）[230 Kth Smallest Element in a BST]()   
+6. 二叉搜索树中两个节点的最低公共祖先[235 Lowest Common Ancestor of a Binary Search Tree]()    
+7. 二叉搜索树的后序遍历序列：判断某个数组是不是二叉搜索树的后序遍历结果[No.24 （剑指 offer 第 24 题）]()    
+
+
+
 
 144.94.145 二叉树的前序遍历、中序遍历、后序遍历
 
@@ -327,6 +413,14 @@ struct node* search(int data) {
 5.[117 populating right pointer in ordinary binary tree](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/117.populating_next_rigth_pointer_2.cpp)  
 6.[623 add new row to binary tree](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/623.add_one_row_to_tree.cpp)  
 7.[637 average of every row](https://github.com/JasonPick/recordings-in-Jan/blob/leecode/leecode/tree/637.average_of_level.cpp)  
+
+
+
+404. 二叉树左叶子结点的和
+
+
+
+
 
 And here is the same code with syntax highlighting:
 
