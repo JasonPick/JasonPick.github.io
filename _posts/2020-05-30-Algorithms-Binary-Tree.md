@@ -265,39 +265,39 @@ struct node* search(int data) {
 
 {: .box-warning}
 
-1. 先序和中序遍历可以唯一确定一棵二叉树[105 Construct Binary Tree from Preorder and Inorder Traversal]()      
-2. 中序和后序遍历可以唯一确定一棵二叉树[106 Construct Binary Tree from Inorder and Postorder Traversal]()     
-3. 根据二叉树构建字符串[606 Construct String from Binary Tree]()         
+1. 先序和中序遍历可以唯一确定一棵二叉树[105 Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)       
+2. 中序和后序遍历可以唯一确定一棵二叉树[106 Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)     
+3. 根据二叉树构建字符串[606 Construct String from Binary Tree](https://leetcode.com/problems/construct-string-from-binary-tree/).             
 
 
 * 二叉树的序列化和反序列化
 
 {: .box-warning}
 
-[297 Serialize and Deserialize Binary Tree]()
+[297 Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
 
 
 * 二叉树的转换
 
 {: .box-warning}
 
-1. 有序数组转换到二叉搜索树[108 Convert Sorted Array to Binary Search Tree]()       
-2. 有序链表转换到二叉搜索树[109 Convert Sorted List to Binary Search Tree]()   
-3. 将二叉树碾平成单链表[114 Flatten Binary Tree to Linked List]()    
-4. [二叉搜索树转换成双向链表]()   
+1. 有序数组转换到二叉搜索树[108 Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)       
+2. 有序链表转换到二叉搜索树[109 Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)     
+3. 将二叉树碾平成单链表[114 Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)    
+4. [二叉搜索树转换成双向链表](https://blog.51cto.com/muhuizz/1878366)    
 
 
 * 二叉树的性质
 
 {: .box-warning}
 
-1. 二叉树的最大深度（叶子节点到根节点的距离）[104 Maximum Depth of Binary Tree]()        
-2. 二叉树的最小深度（叶子节点到根节点的距离）[111 Minimum Depth of Binary Tree]()    
-3. 二叉树的最大宽度[662 Maximum Width of Binary Tree]()      
-4. 判断两棵二叉树是否相同[100 Same Tree]()       
-5. 对称的二叉树（二叉树的镜像)[101 Symmetric Tree]()      
-6. 翻转二叉树[226 Invert Binary Tree]()   
-7. 判断二叉树是否为另一个树的子树[572 Subtree of Another Tree]()   
+1. 二叉树的最大深度（叶子节点到根节点的距离）[104 Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/)        
+2. 二叉树的最小深度（叶子节点到根节点的距离）[111 Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)    
+3. 二叉树的最大宽度[662 Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/)      
+4. 判断两棵二叉树是否相同[100 Same Tree](https://leetcode.com/problems/same-tree/solution/)           
+5. 对称的二叉树（二叉树的镜像)[101 Symmetric Tree](https://leetcode.com/problems/same-tree/submissions/)      
+6. 翻转二叉树[226 Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/submissions/)   
+7. 判断二叉树是否为另一个树的子树[572 Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/)   
 
 
 
