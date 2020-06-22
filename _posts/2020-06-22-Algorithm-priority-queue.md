@@ -28,12 +28,10 @@ categories: ['algorithms']
 通常，堆用于实现优先级队列，因为与数组或链表相比，堆可提供更好的性能。
 
 
-
-
-Heap: Binary, Binomial, Fibonacci
-Binary Search Tree
-
-![](https://www.itcodemonkey.com/data/upload/portal/20180925/1537838716353226.png)
+| 堆类型 | getHighestPriority()时间复杂度 | insert()时间复杂度 |deleteHighestPriority()时间复杂度|
+| :------ |:--- | :--- |
+| 二进制堆 Binary| O(1) | O(logN) |O(logN)|
+| 斐波那契堆 Fibonacci| O(1) | O(1) |O(logN)|
 
 
 ## Practice - Leetcode
@@ -45,15 +43,17 @@ int[] arr = [4,5,8,2] <- ...10
 
 切分问题，Max，每次问largest
 
-方法：
+
+思路：
+
 
 1. 排序 k.Max -> sorted 时间复杂度 O(klogk)
 
-2. 优先队列 mini heap
+2. 优先队列 mini heap 复杂度 O(N* (1 or logK))  
 
 ![](/img/heap.001.png)
 
-```
+``` python
 import heapq
 class KthLargest:
 
@@ -62,7 +62,7 @@ class KthLargest:
       self.heap = []
       for n in nums:
           self.add(n) 
-```
+
         
 
     def add(self, val: int) -> int:
@@ -72,8 +72,11 @@ class KthLargest:
             heapq.heappop(self.heap)
             heapq.heappush(self.heap,val)
         return self.heap[0]
+	
+```
         
-复杂度 O(N* (1 or logK))  
+
+
 
 ###  #239 Sliding Window K  
 找到当前窗口的最大值
@@ -85,7 +88,7 @@ int[] arr = [3,1,3,-1，-3，5，3，6]
 Output: [3,3,5,5,6]
 
 
-方法：
+思路：
 
 1. Priority Queue -> Max Heap  
 
@@ -108,23 +111,8 @@ b. 维护
 
 ***传入参数判空真的很重要！！！！！***
 
-```
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        window , res = [],[]
-        if not nums : 
-            return []
-        for i,x in enumerate(nums):
-            if i >= k and  window[0] <= i-k:
-                window.pop(0)
-            while window and nums[window[-1]] <= x:
-                window.pop()
-            window.append(i)
-            if i >= k-1:
-                res.append(nums[window[0]])
-        return res
-```
-c++ version:
-```
+
+``` c++
 #include <queue>
 class Solution {
 
