@@ -1,8 +1,35 @@
---
---
-## Priority Queue
+---
+layout: post
+title: 队列专题
+subtitle: Part 2：优先队列
+tags: [algorithms, queue]
+comments: true
+categories: ['algorithms']
+---
 
-### 按照优先级出队
+在这里我们将讨论优先队列。
+
+
+## 优先队列
+
+
+优先队列在队列的基础上进行了扩展：
+
+
+* 每个元素都有与之关联的优先级。 
+
+* 高优先级的元素在低优先级的元素之前出队。
+
+* 如果两个元素具有相同的优先级，则将根据它们在队列中的顺序为其提供服务。
+
+
+### 优先队列的实现
+
+通常，堆用于实现优先级队列，因为与数组或链表相比，堆可提供更好的性能。
+
+
+
+
 Heap: Binary, Binomial, Fibonacci
 Binary Search Tree
 
