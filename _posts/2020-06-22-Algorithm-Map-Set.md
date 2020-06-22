@@ -1,13 +1,57 @@
---
---
-## Hash Table & Functions & Collisions
-- ### Hash Collision
-lies 映射同一地址
-foes   
+---
+layout: post
+title: MAP & SET 专题
+subtitle: 经典题目整理
+tags: [algorithms, map, set]
+comments: true
+categories: ['algorithms']
+---
+
+## 哈希表 & 哈希函数 & 哈希碰撞
+
+
+-## 哈希函数：
+
+{.box-notes}
+
+哈希函数：哈希函数将一个较大的数字或字符串映射为一个较小的整数，可用作哈希表中的索引。
+
+
+一个好的哈希函数应具有以下属性：
+
+* 计算的有效性
+* 应均匀分配键（每个键在每个表中的位置均等）
+
+
+-## 哈希表：
+
+{.box-notes}
+
+哈希表：一个数组，用于存储 hash(record) 的指针。如果没有哈希函数值等于该条目的index，则哈希表中的条目为NIL。
+
+
+- ## 哈希碰撞
+
+{.box-notes}
+
+哈希碰撞：因此两个key哈希之后可能会产生相同的值。在哈希表中，新的key插入时发现index已占用的情况称为冲突。
+
+   
 ![](https://www.cs.auckland.ac.nz/software/AlgAnim/fig/dir_acc_table.gif)
 
-- ### 解决办法：拉链表头解决碰撞(待补充)
+处理哈希碰撞的方法：
+
+* 链式方法：使每个单元指向具有相同哈希值的记录的链表，需要在表外额外增加内存
+
+* 开放寻址：开放寻址的所有元素都存储在哈希表本身中，本个表index都包含一条记录或者NIL。在搜索元素时
+
+
+- ### 解决办法：链式方法解决碰撞
 ![](https://www.cs.auckland.ac.nz/software/AlgAnim/fig/dir_acc_lists.gif)
+
+- ### 解决办法：
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2015/08/openAddressing1.png)
+
 
 ## Map vs Set vs List
 - ### List 
@@ -24,9 +68,9 @@ foes
 ***经常用作查询和计数***
 
 - ###对比
-Hash Map: Search -> O(1),    unsorted/disordered
+Hash Map: Search -> O(1),    unsorted/disordered   in C++ unordered_map
 
-Tree Map: Search -> O(logn), sorted
+Tree Map: Search -> O(logn), sorted                in C++ map 
 
 具体问题具体分析：当对于时间复杂度要求很高的时候选择Hash Map，如果要求有序性则喧杂Tree Map。 （Python的dict使用hash map）
 
@@ -41,21 +85,24 @@ Tree Map: Search -> O(logn), sorted
 
 'anagram' -> 'nagamar'
 
-方法：
+思路：
 
-1. 排序 对string进行排序看排序过后的结果是否一致，时间复杂度 O(NlogN)
+1. 排序 对string进行排序看排序过后的结果是否一致，时间复杂度 O(NlogN) 空间O(1)
+
+例子：
 
 'rat' -> 'art'
 
 'tar' -> 'art'
 
 
-```
+``` python
     def isAnagram(self, s: str, t: str) -> bool:
         return sorted(s) == sorted(t)
  ```
+ 
 2. Map and count
-construct a dict {letter: count} 时间复杂度 O(N)
+使用一个字典进行计数 {letter: count} 时间复杂度 O(N)空间O(N)
 
 {'a':3, 'n':1, 'g':1, 'r': 1, 'm':1}
 
@@ -75,7 +122,7 @@ array=[2,7,11,15] target= 9
 
 Output: [0,1]
 
-方法：
+思路：
 
 1. 暴力 两层循环进行查找，时间复杂度 O(N*N)
 
@@ -99,7 +146,7 @@ Output: [
   [-1, -1, 2]
 ]
 
-方法：
+思路：
 
 1. 暴力 三层循环，时间复杂度 O(N*N*N)
 
