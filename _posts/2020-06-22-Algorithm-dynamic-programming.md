@@ -1,4 +1,11 @@
-
+---
+layout: post
+title: 队列专题
+subtitle: Part 2：优先队列
+tags: [algorithms, queue]
+comments: true
+categories: ['algorithms']
+---
 
 这里我们讨论利用动态规划算法来解决问题
 
