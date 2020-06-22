@@ -463,7 +463,7 @@ int main()
  2.回退字符串对比[844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)  
  3.反转字符串[344. Reverse String](https://leetcode.com/problems/reverse-string/)  
  4.是否是回文字符串[125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)  
- 5.反转字符串[344. Reverse String](https://leetcode.com/problems/reverse-string/)  
+
 
 
 709.大写变小写
@@ -476,6 +476,8 @@ int main()
 		if (c >= 'A' && c <= 'Z') c += 32;
 ```
  
+ 
+ 
 844. 回退字符串对比
 
 思路：
@@ -487,11 +489,15 @@ int main()
   然后检查当前pointer是否都 >=0,不想等意味着长度不同   
   
 
+
+
 344. 反转字符串
 
 思路：
 
 * 双指针法，一个指着头部，一个指着尾部，swap( char)
+
+
 
 
 125.是否是回文字符串
@@ -503,11 +509,6 @@ int main()
 
 
 
-344.反转字符串
-
-思路：
-
-* swap()
 
 
 =====================================================
@@ -540,7 +541,7 @@ int main()
 * 表达式求值问题
 
 
-{: .box-erroe}
+{: .box-error}
 
  1.整数转罗马数字，难度中等 [ 12. Integer to Roman](https://leetcode.com/problems/integer-to-roman/)  
  2.字符串相乘，难度中等[43. Multiply Strings](https://leetcode.com/problems/multiply-strings/)  
