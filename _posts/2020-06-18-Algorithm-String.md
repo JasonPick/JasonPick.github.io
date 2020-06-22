@@ -310,3 +310,329 @@ int main()
 } 
 
 ~~~
+
+
+## 字符串习题列表
+
+* 简单问题
+
+
+{: .box-warning}
+
+ 1.大写变小写 [709. To Lower Case ](https://leetcode.com/problems/to-lower-case/)  
+ 2.回退字符串对比[844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)  
+ 3.反转字符串[344. Reverse String](https://leetcode.com/problems/reverse-string/)  
+ 4.是否是回文字符串[125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)  
+ 5.反转字符串[344. Reverse String](https://leetcode.com/problems/reverse-string/)  
+
+
+
+* 回文问题
+
+
+{: .box-warning}
+
+ 1.最长回文子串，难度中等 [5. Longest Palindromic Substring ](https://leetcode.com/problems/longest-palindromic-substring/)  
+ 2.最短回文串，难度困难[214. Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome/)  
+ 3.寻找最近的回文数，难度困难[564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)  
+ 
+
+* 子串问题
+
+
+{: .box-warning}
+
+ 1.最小覆盖子串，难度困难 [76. Minimum Window Substring ](https://leetcode.com/problems/minimum-window-substring/)  
+ 2.不同的子序列，难度困难[115. Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/)  
+ 3.最长特殊序列II，难度中等[522. Longest Uncommon Subsequence II](https://leetcode.com/problems/longest-uncommon-subsequence-ii/)  
+ 4.按字典序排在最后的子串，难度困难[1163. Last Substring in Lexicographical Order](https://leetcode.com/problems/last-substring-in-lexicographical-order/)  
+
+
+* 表达式求值问题
+
+
+{: .box-warning}
+
+ 1.整数转罗马数字，难度中等 [ 12. Integer to Roman](https://leetcode.com/problems/integer-to-roman/)  
+ 2.字符串相乘，难度中等[43. Multiply Strings](https://leetcode.com/problems/multiply-strings/)  
+ 3.复数乘法，难度中等[537. Complex Number Multiplication](https://leetcode.com/problems/complex-number-multiplication/)  
+ 4.基本计算器IV，难度困难[770. Basic Calculator IV](https://leetcode.com/problems/basic-calculator-iv/)  
+ 
+
+
+* 语法分析问题
+
+
+{: .box-warning}
+
+ 1.最长的有效括号，难度困难 [ 32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)  
+ 2.有效数字，难度困难[65. Valid Number](https://leetcode.com/problems/valid-number/)  
+ 3.简化路径，难度中等[71. Simplify Path](https://leetcode.com/problems/simplify-path/)  
+ 4.Lisp语法分析，难度困难[736. Parse Lisp Expression](https://leetcode.com/problems/parse-lisp-expression/)  
+ 
+
+* 字符串转换和交换问题
+
+
+{: .box-warning}
+
+ 1.通配符匹配，难度困难 [ 44. Wildcard Matching](https://leetcode.com/problems/wildcard-matching/)  
+ 2.特殊的二进制排序，难度中等[791. Custom Sort String](https://leetcode.com/problems/custom-sort-string/)  
+ 3.有序队列，难度困难[899. Orderly Queue](https://leetcode.com/problems/orderly-queue/)  
+ 
+
+* 验证IP地址问题
+
+
+{: .box-warning}
+
+ 1.复原IP地址，难度中等 [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/)  
+ 2.验证IP地址，难度中等[468. Validate IP Address](https://leetcode.com/problems/validate-ip-address/)  
+ 
+
+ 
+* 模式匹配问题
+
+
+{: .box-warning}
+
+ 1.查找和替换模式，难度中等 [890. Find and Replace Pattern](https://leetcode.com/problems/find-and-replace-pattern/)  
+ 2.戳印序列，难度困难[936. Stamping The Sequence](https://leetcode.com/problems/stamping-the-sequence/)  
+ 
+ 
+* 正则表达式问题（匹配问题）
+
+
+{: .box-warning}
+
+ 1.正则表达式匹配，难度困难 [10. Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)  
+ 
+
+ 
+* 递归/回溯思想求解
+
+
+{: .box-warning}
+
+ 1.括号生成，难度中等 [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)  
+ 2.模糊坐标，难度中等 [816. Ambiguous Coordinates](https://leetcode.com/problems/ambiguous-coordinates/)  
+ 
+ 
+* 特定变换
+
+
+{: .box-warning}
+
+ 1.z变换，难度中等 [6. ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/)  
+
+
+ 
+* 字符串插入、删除和排序
+
+
+{: .box-warning}
+
+ 1.字母异位分组，难度中等 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)  
+ 2.编辑距离，难度中等 [72. Edit Distance](https://leetcode.com/problems/edit-distance/)  
+ 3.单词接龙II，难度中等 [126. Word Ladder II](https://leetcode.com/problems/word-ladder-ii/)  
+
+ 
+* 字符串细节问题
+
+
+{: .box-warning}
+
+ 1.文本左右对齐，难度困难 [68. Text Justification](https://leetcode.com/problems/text-justification/)  
+ 2.花括号展开II，难度困难 [1096. Brace Expansion II](https://leetcode.com/problems/brace-expansion-ii/)  
+ 
+
+ 
+
+ 
+
+ 
+## Solution
+
+
+* 简单问题
+
+
+{: .box-error}
+
+ 1.大写变小写 [709. To Lower Case ](https://leetcode.com/problems/to-lower-case/)  
+ 2.回退字符串对比[844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)  
+ 3.反转字符串[344. Reverse String](https://leetcode.com/problems/reverse-string/)  
+ 4.是否是回文字符串[125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)  
+ 5.反转字符串[344. Reverse String](https://leetcode.com/problems/reverse-string/)  
+
+
+709.大写变小写
+
+思路：
+
+* for loop循环,逐一比较字符c  
+* 关键点 
+``` c++
+		if (c >= 'A' && c <= 'Z') c += 32;
+```
+ 
+844. 回退字符串对比
+
+思路：
+
+* 使用指针法，从末尾开始扫描有两个状态变量，skip 和 pointer;   
+  如果s_pointer指向一个‘#’符号那么，skip++,pointer--;  
+  如果skip >0，skip-- , pointer--;  
+  否则检查当前pointer的字符是否相等;  
+  然后检查当前pointer是否都 >=0,不想等意味着长度不同   
+  
+
+344. 反转字符串
+
+思路：
+
+* 双指针法，一个指着头部，一个指着尾部，swap( char)
+
+
+125.是否是回文字符串
+
+思路：
+
+* 因为我们只关心字符，不关心标点符号，我们先将所有字母或者数字放入res string中，将大写字母转化成小写字母；  
+  接着使用双指针法，从两头进行对比，如果不想等则false
+
+
+
+344.反转字符串
+
+思路：
+
+* swap()
+
+
+=====================================================
+待续
+
+
+
+* 回文问题
+
+
+{: .box-error}
+
+ 1.最长回文子串，难度中等 [5. Longest Palindromic Substring ](https://leetcode.com/problems/longest-palindromic-substring/)  
+ 2.最短回文串，难度困难[214. Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome/)  
+ 3.寻找最近的回文数，难度困难[564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)  
+ 
+ 
+
+* 子串问题
+
+
+{: .box-error}
+
+ 1.最小覆盖子串，难度困难 [76. Minimum Window Substring ](https://leetcode.com/problems/minimum-window-substring/)  
+ 2.不同的子序列，难度困难[115. Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/)  
+ 3.最长特殊序列II，难度中等[522. Longest Uncommon Subsequence II](https://leetcode.com/problems/longest-uncommon-subsequence-ii/)  
+ 4.按字典序排在最后的子串，难度困难[1163. Last Substring in Lexicographical Order](https://leetcode.com/problems/last-substring-in-lexicographical-order/)  
+
+
+* 表达式求值问题
+
+
+{: .box-erroe}
+
+ 1.整数转罗马数字，难度中等 [ 12. Integer to Roman](https://leetcode.com/problems/integer-to-roman/)  
+ 2.字符串相乘，难度中等[43. Multiply Strings](https://leetcode.com/problems/multiply-strings/)  
+ 3.复数乘法，难度中等[537. Complex Number Multiplication](https://leetcode.com/problems/complex-number-multiplication/)  
+ 4.基本计算器IV，难度困难[770. Basic Calculator IV](https://leetcode.com/problems/basic-calculator-iv/)  
+ 
+
+
+* 语法分析问题
+
+
+{: .box-error}
+
+ 1.最长的有效括号，难度困难 [ 32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)  
+ 2.有效数字，难度困难[65. Valid Number](https://leetcode.com/problems/valid-number/)  
+ 3.简化路径，难度中等[71. Simplify Path](https://leetcode.com/problems/simplify-path/)  
+ 4.Lisp语法分析，难度困难[736. Parse Lisp Expression](https://leetcode.com/problems/parse-lisp-expression/)  
+ 
+
+* 字符串转换和交换问题
+
+
+{: .box-error}
+
+ 1.通配符匹配，难度困难 [ 44. Wildcard Matching](https://leetcode.com/problems/wildcard-matching/)  
+ 2.特殊的二进制排序，难度中等[791. Custom Sort String](https://leetcode.com/problems/custom-sort-string/)  
+ 3.有序队列，难度困难[899. Orderly Queue](https://leetcode.com/problems/orderly-queue/)  
+ 
+
+* 验证IP地址问题
+
+
+{: .box-warning}
+
+ 1.复原IP地址，难度中等 [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/)  
+ 2.验证IP地址，难度中等[468. Validate IP Address](https://leetcode.com/problems/validate-ip-address/)  
+ 
+
+ 
+* 模式匹配问题
+
+
+{: .box-error}
+
+ 1.查找和替换模式，难度中等 [890. Find and Replace Pattern](https://leetcode.com/problems/find-and-replace-pattern/)  
+ 2.戳印序列，难度困难[936. Stamping The Sequence](https://leetcode.com/problems/stamping-the-sequence/)  
+ 
+ 
+* 正则表达式问题（匹配问题）
+
+
+{: .box-error}
+
+ 1.正则表达式匹配，难度困难 [10. Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)  
+ 
+
+ 
+* 递归/回溯思想求解
+
+
+{: .box-error}
+
+ 1.括号生成，难度中等 [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)  
+ 2.模糊坐标，难度中等 [816. Ambiguous Coordinates](https://leetcode.com/problems/ambiguous-coordinates/)  
+ 
+ 
+* 特定变换
+
+
+{: .box-error}
+
+ 1.z变换，难度中等 [6. ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/)  
+
+
+ 
+* 字符串插入、删除和排序
+
+
+{: .box-error}
+
+ 1.字母异位分组，难度中等 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)  
+ 2.编辑距离，难度中等 [72. Edit Distance](https://leetcode.com/problems/edit-distance/)  
+ 3.单词接龙II，难度中等 [126. Word Ladder II](https://leetcode.com/problems/word-ladder-ii/)  
+
+ 
+* 字符串细节问题
+
+
+{: .box-error}
+
+ 1.文本左右对齐，难度困难 [68. Text Justification](https://leetcode.com/problems/text-justification/)  
+ 2.花括号展开II，难度困难 [1096. Brace Expansion II](https://leetcode.com/problems/brace-expansion-ii/)  
+ 
+
+ 
