@@ -1,5 +1,11 @@
---
---
+---
+layout: post
+title: 分治专题
+subtitle: 分治的经典题目
+tags: [algorithms, divide and conquer]
+comments: true
+categories: ['algorithms']
+---
 
 
 这里我们来讨论递归和分治算法
