@@ -1,4 +1,10 @@
 ---
+layout: post
+title: 操作系统深入理解
+subtitle: 问题整理
+cover-img: /assets/img/path.jpg
+tags: [OS]
+categories: ['Operating System']
 ---
 
 # 操作系统深入理解
