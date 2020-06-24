@@ -28,6 +28,7 @@
    
    * 对于具体的应用场景，我们可以分为两个类别
    
+   
       * **CPU密集型程序**
       
       
@@ -38,14 +39,19 @@
         所有的线程都要等待时间片，在这个情况下，四个线程并没有比一个线程更快。
         
         
-        {:box-error}
+        {:.box-error}
         
         单核CPU密集型程序不适合使用多线程来处理
         
         
-        反之四核CPU下
+        反之四核CPU下，分为四个线程来计算，会大大提升效率
+        
+        ![](https://upload-images.jianshu.io/upload_images/19895418-7370e52c09df4d86?imageMogr2/auto-orient/strip|imageView2/2/w/1080/format/webp)
         
         
+        {:.box-waring}
+        
+        **所以，如果是多核CPU 处理 CPU 密集型程序，我们完全可以最大化的利用 CPU 核心数，应用并发编程来提高效率**
       
       
       * **IO密集型程序**
