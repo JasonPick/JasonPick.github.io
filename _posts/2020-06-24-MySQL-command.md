@@ -130,3 +130,20 @@ categories: ['MySQL']
 
 
   ```SHOW INDEX FROM Orders;```
+
+
+
+**11.index**
+
+ * 创建一个index
+ 
+  ```create index <index-name> on <relation-name><attribute_name>```
+
+
+  ```create index b-index on branch(branch-name)```
+  
+  
+* 删除一个index
+
+
+ ```drop index <index-name>```
