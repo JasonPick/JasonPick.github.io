@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Flake it till you make it
-subtitle: Excerpt from Soulshaping by Jeff Brown
+title: MYSQL语句复习
+subtitle: 复习整理
 cover-img: /assets/img/path.jpg
 tags: [mysql]
 categories: ['MySQL']
