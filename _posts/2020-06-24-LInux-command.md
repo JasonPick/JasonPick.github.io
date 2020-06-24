@@ -1,6 +1,13 @@
 ---
-
+layout: post
+title: Linux常用命令(待续)
+subtitle: Part I
+cover-img: /assets/img/path.jpg
+tags: [linux]
+categories: ['Linux']
 ---
+
+
 
 这里整理一下linux中的常用命令，参考自[github](https://github.com/LiPingjiang/bigdata/edit/master/linux/linux.md)
 
