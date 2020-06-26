@@ -793,7 +793,46 @@ Paxos算法就是用来解决这类问题的，多台服务器通过内部的投
 
 Paxos算法比较复杂，为了简化实现，ZooKeeper使用了一种叫ZAB（ZooKeeper Atomic Broadcast，ZooKeeper原子消息广播协议）的算法协议。
 
+有三种状态信息：
+
+ -Looking ：选举状态。
+
+ -Following ：Follower节点（从节点）所处的状态。
+
+ -Leading ：Leader节点（主节点）所处状态。
+
+* 最大ZXID的概念：节点本地的最新事务编号，包含epoch和计数两部分。
+
+
+ZAB的恢复过程如下，三个阶段：
+
+
+1. 选举阶段
+
+  -此时集群中的节点处于Looking状态。它们会各自向其他节点发起投票，投票当中包含自己的服务器ID和最新事务ID（ZXID）。
+  
+  -接下来，节点会用自身的ZXID和从其他节点接收到的ZXID做比较，如果发现别人家的ZXID比自己大，也就是数据比自己新，那么就重新发起投票，投票给目前已知最大的ZXID所属节点。
+  
+  -每次投票都会做票数统计，如果有投票超过半数，那么这个结点就成为准leader，状态为Leading，其他结点为Following
+
+
+2. 发现阶段：用于在从节点中发现最新的ZXID和事务日志。
+  
+  -Leader集思广益，接收所有Follower发来各自的最新epoch值。Leader从中选出最大的epoch，基于此值加1，生成新的epoch分发给各个Follower。
+  
+  -各个Follower收到全新的epoch后，返回ACK给Leader，带上各自最大的ZXID和历史事务日志。Leader选出最大的ZXID，并更新自身历史日志。
+
+
+3. 同步阶段
+
+  -把Leader刚才收集得到的最新历史事务日志，同步给集群中所有的Follower。只有当半数Follower同步成功，这个准Leader才能成为正式的Leader。
+  
+  
+
 基于ZAB算法，ZooKeeper集群保证数据更新的一致性，并通过集群方式保证ZooKeeper系统高可用。
+
+
+
 
 但是ZooKeeper系统中所有服务器都存储相同的数据，也就是数据没有分片存储，因此不满足分区耐受性。
 
@@ -805,6 +844,14 @@ ZooKeeper通过一种树状结构记录数据，如下图所示。
 
 
 应用程序可以通过路径的方式访问ZooKeeper中的数据，比如/services/YaView/services/stupidname这样的路径方式修改、读取数据。
+
+
+每个树上的结点称为 _Znode_ ,Znode包含了数据、子结点引用、权限信息等。一个Znode可用如下表示
+
+![](https://user-gold-cdn.xitu.io/2018/5/22/16385a1ecf740084?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+每个节点的数据最大不能超过1MB。
+
 
 ZooKeeper还支持监听模式，当数据发生改变的时候，通知应用程序。
 
