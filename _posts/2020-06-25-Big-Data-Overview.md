@@ -361,22 +361,17 @@ Hadoop2.0比起Hadoop1.0来说，最大的改进是加入了资源调度框架Ya
    
    -Hadoop1的HDFS存在一些缺点：NameNode的单点故障问题，NameNode的拓展性问题，性能问题（当HDFS存在大量小文件时候）和隔离性问题（一个用户操作很大的job影响slow其他用户的job）
    
-   -Hadoop2作出
+   -Hadoop2作出一些改进，提出HDFSFederation以及高可用HA。
+   
+     -HDFSFederation使得NameNode间相互独立，也就是说它们之间不需要相互协调。且多个NameNode分管不同的目录进而实现访问隔离和横向扩展。
+     
+     -高可用(HA),HA主要指的主从热备。这样，当一个NameNode所在的服务器宕机时，可以在数据不丢失的情况下，手工或者自动切换到另一个NameNode提供服务。
 
 
-针对Hadoop1.0中NameNode制约HDFS的扩展性问题，提出HDFSFederation以及高可用HA。此时NameNode间相互独立，也就是说它们之间不需要相互协调。且多个NameNode分管不同的目录进而实现访问隔离和横向扩展。
-
-这样NameNode的可拓展性自然而然可用增加，据统计Hadoop2.0中最多可以达到10000个节点同时运行，并且这样的架构改进也解决了NameNode单点故障问题。
-
-再来说说高可用(HA),HA主要指的是可以同时启动2个NameNode。其中一个处于工作(Active)状态，另一个处于随时待命（Standby）状态。这样，当一个NameNode所在的服务器宕机时，可以在数据不丢失的情况下，手工或者自动切换到另一个NameNode提供服务。
+* MapReduce：针对Hadoop1.0中MR的不足，引入了Yarn框架。Yarn框架中将JobTracker资源分配和作业控制分开，分为Resource Manager(RM)以及Application Master(AM)。
 
 
-针对Hadoop1.0中MR的不足，引入了Yarn框架。Yarn框架中将JobTracker资源分配和作业控制分开，分为Resource Manager(RM)以及Application Master(AM)。
-
-
-
-
-
+总的来说，Hadoop1 和 Hadoop2的区别可以简化
 
 * Hadoop1：我收到任务，由我来拆解任务成子任务，并且联系下方的同学谁有空就谁做，有任务的同学单独向我汇报进度。
 
