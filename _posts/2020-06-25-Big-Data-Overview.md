@@ -148,6 +148,8 @@ Spark兴起的原因：
   
   
 * 写操作
+
+
 ```
 1.客户端向NameNode发出写文件请求。
 
@@ -178,7 +180,6 @@ Spark兴起的原因：
 
 
 * 读操作
-
 
 ```
 1）客户端向namenode请求下载文件，namenode通过查询元数据，找到文件块所在的datanode地址。
@@ -326,9 +327,21 @@ Yarn资源调度框架
     
     每个应用程序启动后都会先启动自己的ApplicationMaster，由ApplicationMaster根据应用程序的资源需求进一步向ResourceManager进程申请容器资源，得到容器以后就会分发自己的应用程序代码到容器上启动，进而开始分布式计算。
     
- **Yarn**
+    
+ **Yarn的流程**
   
+  ```
+ 1.我们向Yarn提交应用程序，包括MapReduce ApplicationMaster、我们的MapReduce程序，以及MapReduce Application启动命令。
+
+2.ResourceManager进程和NodeManager进程通信，根据集群资源，为用户程序分配第一个容器，并将MapReduce ApplicationMaster分发到这个容器上面，并在容器里面启动MapReduce ApplicationMaster。
+
+3.MapReduce ApplicationMaster启动后立即向ResourceManager进程注册，并为自己的应用程序申请容器资源。
+
+4.MapReduce ApplicationMaster申请到需要的容器后，立即和相应的NodeManager进程通信，将用户MapReduce程序分发到NodeManager进程所在服务器，并在容器中运行，运行的就是Map或者Reduce任务。
+
+5.Map或者Reduce任务在运行期和MapReduce ApplicationMaster通信，汇报自己的运行状态，如果运行结束，MapReduce ApplicationMaster向ResourceManager进程注销并释放所有的容器资源。
   
+  ```
 
 ### Hadoop 1.0 和 Hadoop2.0 的区别：
 
