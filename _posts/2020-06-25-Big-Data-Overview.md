@@ -193,7 +193,7 @@ Spark兴起的原因：
 ```
 
 
-- ### MapReduce
+- ## MapReduce
 
 
 MapReduce既是一个编程模型又是一个计算框架
@@ -205,7 +205,7 @@ MapReduce既是一个编程模型又是一个计算框架
 MapReduce编程模型：包含 Map 和 Reduce 两个过程，Map阶段给每个数据块分配一个map，key相同的数据分配给同一个Reduce，Reduce阶段进行count处理
 
 
-#### MapReduce计算框架是如何运作的
+### MapReduce计算框架是如何运作的
 
 
 有两个关键性问题：
@@ -240,7 +240,7 @@ JobTracker进程和TaskTracker进程是主从关系，主服务器只有一台�
 ![](https://static001.geekbang.org/resource/image/d6/c7/d64daa9a621c1d423d4a1c13054396c7.png)
 
 
-##### shuffle机制
+#### shuffle机制
 
 
 每个Map任务的计算结果都会写入到本地文件系统，等Map任务快要计算完成的时候，MapReduce计算框架会启动shuffle过程，
@@ -347,15 +347,45 @@ Yarn资源调度框架
 
 ### Hadoop 1.0 和 Hadoop2.0 的区别：
 
+Hadoop1.0 和 Hadoop2.0 的架构如下图：
+
+
+![](https://img2018.cnblogs.com/blog/1011838/201812/1011838-20181214213729657-95804605.png)
+
+
+Hadoop2.0比起Hadoop1.0来说，最大的改进是加入了资源调度框架Yarn。
+
+
+* 从HDFS的角度来说
+   
+   
+   -Hadoop1的HDFS存在一些缺点：NameNode的单点故障问题，NameNode的拓展性问题，性能问题（当HDFS存在大量小文件时候）和隔离性问题（一个用户操作很大的job影响slow其他用户的job）
+   
+   -Hadoop2作出
+
+
+针对Hadoop1.0中NameNode制约HDFS的扩展性问题，提出HDFSFederation以及高可用HA。此时NameNode间相互独立，也就是说它们之间不需要相互协调。且多个NameNode分管不同的目录进而实现访问隔离和横向扩展。
+
+这样NameNode的可拓展性自然而然可用增加，据统计Hadoop2.0中最多可以达到10000个节点同时运行，并且这样的架构改进也解决了NameNode单点故障问题。
+
+再来说说高可用(HA),HA主要指的是可以同时启动2个NameNode。其中一个处于工作(Active)状态，另一个处于随时待命（Standby）状态。这样，当一个NameNode所在的服务器宕机时，可以在数据不丢失的情况下，手工或者自动切换到另一个NameNode提供服务。
+
+
+针对Hadoop1.0中MR的不足，引入了Yarn框架。Yarn框架中将JobTracker资源分配和作业控制分开，分为Resource Manager(RM)以及Application Master(AM)。
+
+
+
+
+
 
 * Hadoop1：我收到任务，由我来拆解任务成子任务，并且联系下方的同学谁有空就谁做，有任务的同学单独向我汇报进度。
 
 * Hadoop2:我知道有个任务要处理，在同学中选中一位班长，由班长来拆解子任务并告诉我需要的多少同学去做，由班长收集进度并汇报给我。
 
-这2种方式，同学们之间都系会有内容传递，把“移动的不是数据而是计算”改成“尽量少移动数据，分配计算任务”是否更合适？而如何合理分配计算是不是更值得探讨？
 
 
-### Hive
+
+## Hive
 
 
 #### MapReduce实现SQL的原理
@@ -412,7 +442,7 @@ SQL语句
 Hive内部预置了很多函数，Hive的执行计划就是根据SQL语句生成这些函数的DAG（有向无环图），然后封装进MapReduce的map和reduce函数中
 
 
-### Spark
+## Spark
 
 
 **Why Spark?**
@@ -436,7 +466,7 @@ counts.saveAsTextFile("hdfs://...")
 ```
 
 
-#### Spark架构核心元素的RDD
+### Spark架构核心元素的RDD
 
 
 RDD是Spark的核心概念，是弹性数据集（Resilient Distributed Datasets）的缩写。
@@ -486,7 +516,7 @@ RDD既是Spark面向开发者的编程模型，又是Spark自身架构的核心�
 
 
 
-#### Spark的架构原理
+### Spark的架构原理
 
 
 **DAG**
@@ -630,7 +660,7 @@ Executor先检查自己是否有Driver的执行代码，如果没有，从Driver
 
 
 
-### HBase
+## HBase
 
 
 之前数据库一直是关系数据库的天下，但是关系数据库具有糟糕的海量数据处理能力和僵硬的设计约束。
@@ -731,4 +761,68 @@ LSM树可以看作是一个N阶合并树。
 3:列族因为不固定，所以很难做一些业务约束，
 
 
+
+## 流计算
+
+
+**Spark Streaming**
+
+
+Spark Streaming巧妙地利用了Spark的分片和快速计算的特性，将实时传输进来的数据按照时间进行分段，把一段时间传输进来的数据合并在一起，当作一批数据，再去交给Spark去处理。下图这张图描述了Spark Streaming将数据分段、分批的过程。
+
+![](https://static001.geekbang.org/resource/image/fb/c3/fb535e9dc1813dbacfa03c7cb65d17c3.png)
+
+如果时间段分得足够小，每一段的数据量就会比较小，再加上Spark引擎的处理速度又足够快，这样看起来好像数据是被实时处理的一样，这就是Spark Streaming实时流计算的奥妙。
+
+
+## ZooKeeper
+
+
+HDFS和HBase架构分析时都提到了ZooKeeper,我们比较常用的多台服务器状态一致性的解决方案就是ZooKeeper。
+
+
+**Paxos算法和ZooKeeper**
+
+```
+Paxos算法就是用来解决这类问题的，多台服务器通过内部的投票表决机制决定一个数据的更新与写入。
+
+应用程序连接到任意一台服务器后提起状态修改请求,
+
+会将这个请求发送给集群中其他服务器进行表决。
+
+如果某个服务器同时收到了另一个应用程序同样的修改请求，它可能会拒绝服务器1的表决，并且自己也发起一个同样的表决请求，那么其他服务器就会根据时间戳和服务器排序规则进行表决。
+
+表决结果会发送给其他所有服务器，最终发起表决的服务器也就是服务器1，会根据收到的表决结果决定该修改请求是否可以执行，从而在收到请求的时候就保证了数据的一致性。
+
+```
+
+Paxos算法比较复杂，为了简化实现，ZooKeeper使用了一种叫ZAB（ZooKeeper Atomic Broadcast，ZooKeeper原子消息广播协议）的算法协议。
+
+基于ZAB算法，ZooKeeper集群保证数据更新的一致性，并通过集群方式保证ZooKeeper系统高可用。
+
+但是ZooKeeper系统中所有服务器都存储相同的数据，也就是数据没有分片存储，因此不满足分区耐受性。
+
+
+ZooKeeper通过一种树状结构记录数据，如下图所示。
+
+
+![](https://static001.geekbang.org/resource/image/76/5f/76526be77b0026a0c3b2d661d362665f.png)
+
+
+应用程序可以通过路径的方式访问ZooKeeper中的数据，比如/services/YaView/services/stupidname这样的路径方式修改、读取数据。
+
+ZooKeeper还支持监听模式，当数据发生改变的时候，通知应用程序。
+
+
+因为大数据系统通常都是主从架构，为了保证集群状态一致防止“脑裂”，所以运行期只能有一个主服务器工作（active master），但是为了保证高可用，必须有另一个standby master。
+
+
+那么应用程序和集群其他服务器如何才能知道当前哪个服务器是实际工作的主服务器呢？
+
+
+一台主服务器启动后向ZooKeeper注册自己为当前工作的主服务器，因此另一台服务器就只能注册为热备主服务器，应用程序运行期都和当前工作的主服务器通信。
+
+如果当前工作的主服务器宕机（在ZooKeeper上记录的心跳数据不再更新），热备主服务器通过ZooKeeper的监控机制发现当前工作的主服务器宕机，就向ZooKeeper注册自己成为当前工作的主服务器。应用程序和集群其他服务器跟新的主服务器通信，保证系统正常运行。
+
+因为ZooKeeper系统的多台服务器存储相同数据，并且每次数据更新都要所有服务器投票表决，所以和一般的分布式系统相反，ZooKeeper集群的性能会随着服务器数量的增加而下降。
 
