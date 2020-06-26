@@ -240,7 +240,7 @@ JobTracker进程和TaskTracker进程是主从关系，主服务器只有一台�
 ![](https://static001.geekbang.org/resource/image/d6/c7/d64daa9a621c1d423d4a1c13054396c7.png)
 
 
-##### shufflr机制
+##### shuffle机制
 
 
 每个Map任务的计算结果都会写入到本地文件系统，等Map任务快要计算完成的时候，MapReduce计算框架会启动shuffle过程，
@@ -295,7 +295,7 @@ Yarn资源调度框架
   这种架构方案的主要缺点是，服务器集群资源调度管理和MapReduce执行过程耦合在一起，如果想在当前集群中运行其他计算任务，比如Spark或者Storm，就无法统一使用集群中的资源了。
   
   
-* **WHAT**
+* **WHAT ?**
 
 ![](https://static001.geekbang.org/resource/image/af/b1/af90905013e5869f598c163c09d718b1.jpg)
 
@@ -342,6 +342,8 @@ Yarn资源调度框架
 5.Map或者Reduce任务在运行期和MapReduce ApplicationMaster通信，汇报自己的运行状态，如果运行结束，MapReduce ApplicationMaster向ResourceManager进程注销并释放所有的容器资源。
   
   ```
+  
+
 
 ### Hadoop 1.0 和 Hadoop2.0 的区别：
 
@@ -351,4 +353,382 @@ Yarn资源调度框架
 * Hadoop2:我知道有个任务要处理，在同学中选中一位班长，由班长来拆解子任务并告诉我需要的多少同学去做，由班长收集进度并汇报给我。
 
 这2种方式，同学们之间都系会有内容传递，把“移动的不是数据而是计算”改成“尽量少移动数据，分配计算任务”是否更合适？而如何合理分配计算是不是更值得探讨？
+
+
+### Hive
+
+
+#### MapReduce实现SQL的原理
+
+SQL语句
+
+'SELECT pageid, age, count(1) FROM pv_users GROUP BY pageid, age;'
+
+![](https://static001.geekbang.org/resource/image/0a/37/0ade10e49216575962e071d6fe9a7137.jpg)
+
+
+* map函数的输入输出
+
+  -输入：Key和Value，Value就是左边表中每一行的数据，比如<1, 25>
+  
+  -输出：以输入的Value作为Key，Value统一设为1，比如<<1, 25>, 1>
+  
+  
+* shuffle函数
+
+  - 相同的Key及其对应的Value被放在一起组成一个<Key, Value集合>
+  
+  <<2, 25>, <1, 1>>，这里的Key是<2, 25>，Value集合是<1, 1>。
+  
+  
+* reduce函数的输入输出
+
+  - 输入：shuffle的输出 <<2, 25>, <1, 1>>，
+  
+  - Value集合里所有的数字被相加，然后输出。所以reduce的输出就是<<2, 25>, 2>。
+  
+![](https://static001.geekbang.org/resource/image/bc/57/bc088edf00478c835003272696c44c57.jpg)
+
+
+**Hive就是自动将SQL生成了MapReduce代码**
+
+
+#### Hive的架构
+
+
+![](https://static001.geekbang.org/resource/image/26/ea/26287cac9a9cfa3874a680fdbcd795ea.jpg)
+
+
+* DDL
+
+我们通过Hive的Client（Hive的命令行工具，JDBC等）向Hive提交SQL命令。如果是创建数据表的DDL（数据定义语言），Hive就会通过执行引擎Driver将数据表的信息记录在Metastore元数据组件中，这个组件通常用一个关系数据库实现，记录表名、字段名、字段类型、关联HDFS文件路径等这些数据库的Meta信息（元信息）。
+
+
+* DQL
+
+如果我们提交的是查询分析数据的DQL（数据查询语句），Driver就会将该语句提交给自己的编译器Compiler进行语法分析、语法解析、语法优化等一系列操作，最后生成一个MapReduce执行计划。然后根据执行计划生成一个MapReduce的作业，提交给Hadoop MapReduce计算框架处理。
+
+
+Hive内部预置了很多函数，Hive的执行计划就是根据SQL语句生成这些函数的DAG（有向无环图），然后封装进MapReduce的map和reduce函数中
+
+
+### Spark
+
+
+**Why Spark?**
+
+Spark和MapReduce相比：
+
+
+   * 有更快的执行速度,甚至可以比 MapReduce 快100倍，
+
+   * Spark和MapReduce相比，编程模式更简单
+
+
+使用scala实现word_count,只需要3行
+
+```
+val textFile = sc.textFile("hdfs://...")
+val counts = textFile.flatMap(line => line.split(" "))
+                 .map(word => (word, 1))
+                 .reduceByKey(_ + _)
+counts.saveAsTextFile("hdfs://...")
+```
+
+
+#### Spark架构核心元素的RDD
+
+
+RDD是Spark的核心概念，是弹性数据集（Resilient Distributed Datasets）的缩写。
+
+
+RDD既是Spark面向开发者的编程模型，又是Spark自身架构的核心元素。
+
+* **RDD作为编程模型**
+
+    Spark与MapReduce不同，则直接针对数据进行编程，将大规模数据集合抽象成一个RDD对象，然后在这个RDD上进行各种计算处理，得到一个新的RDD，
+    继续计算处理，直到得到最后的结果数据。所以Spark可以理解成是面向对象的大数据计算。
+
+
+    RDD上定义的函数分两种：
+
+    * 转换（transformation）函数，这种函数的返回值还是RDD；
+
+    * 执行（action）函数，这种函数不再返回RDD。
+
+
+    RDD定义了很多转换操作函数，比如有计算map(func)、过滤filter(func)、合并数据集union(otherDataset)、根据Key聚合reduceByKey(func, [numPartitions])、连接数据集join(otherDataset, [numPartitions])、分组groupByKey([numPartitions])等十几个函数。
+
+
+* **RDD作为核心架构**
+
+
+    跟MapReduce一样，Spark也是对大数据进行分片计算，Spark分布式计算的**数据分片、任务调度都是以RDD为单位展开的**，每个RDD分片都会分配到一个执行进程去处理。
+
+
+    RDD上的转换操作又分为两种：
+
+
+     * RDD不会产生新分片的操作： 比如map、filter等，也就是说一个RDD数据分片，经过map或者filter转换操作后，结果还在当前分片
+
+
+     * RDD会产生新的分片：比如reduceByKey，来自不同分片的相同Key必须聚合在一起进行操作，这样就会产生新的RDD分片
+
+
+**spark的惰性计算**
+
+'rdd2 = rdd1.map(func)'
+
+并不会产生真正的新的物理RDD分片，物理上，Spark只有在产生新的RDD分片时候，才会真的生成一个RDD，Spark的这种特性也被称作惰性计算。
+
+
+实际上，在理解Spark的过程中，应用程序代码中的RDD和Spark执行过程中生成的物理RDD不是一一对应的，需要进行区分。
+
+
+
+#### Spark的架构原理
+
+
+**DAG**
+
+
+首先谈起DAG我们先了解一下**计算阶段**的概念：
+
+  Spark可以根据应用的复杂程度，分割成更多的计算阶段（stage），这些计算阶段组成一个有向无环图DAG，Spark任务调度器可以根据DAG的依赖关系执行计算阶段。
+
+
+所谓DAG也就是有向无环图，满足以下条件：
+
+ * 不同阶段的依赖关系是有向的，
+
+ * 计算过程只能沿着依赖关系方向执行，被依赖的阶段执行完成之前，依赖的阶段不能开始执行，
+
+ * 这个依赖关系不能有环形依赖，否则就成为死循环了。
+ 
+ 
+ 下面这个例子🌰描述了一个典型的Spark运行DAG的不同阶段。
+
+
+![](https://static001.geekbang.org/resource/image/c8/db/c8cf515c664b478e51058565e0d4a8db.png)
+
+
+从图上看，整个应用被切分成3个阶段，阶段3需要依赖阶段1和阶段2，阶段1和阶段2互不依赖。Spark在执行调度的时候，先执行阶段1和阶段2，完成以后，再执行阶段3。
+
+
+{:.box-warning}
+
+所以，你可以看到Spark作业调度执行的核心是DAG，有了DAG，整个应用就被切分成哪些阶段，每个阶段的依赖关系也就清楚了。
+
+之后再根据每个阶段要处理的数据量生成相应的任务集合（TaskSet），每个任务都分配一个任务进程去处理，Spark就实现了大数据的分布式计算。
+
+
+具体来看的话，负责Spark应用DAG生成和管理的组件是DAGScheduler，DAGScheduler根据程序代码生成DAG，然后将程序分发到分布式计算集群，按计算阶段的先后关系调度执行。
+
+
+
+**Spark划分计算阶段的依据是什么呢？**
+
+
+计算阶段划分的依据是shuffle，Spark的DAGScheduler在遇到shuffle的时候，会生成一个计算阶段。不是转换函数的类型，有的函数有时候有shuffle，有时候没有。
+
+
+比如上图例子中RDD B和RDD F进行join，得到RDD G，这里的RDD F需要进行shuffle，RDD B就不需要。
+
+因为RDD B在前面一个阶段，阶段1的shuffle过程中，已经进行了数据分区。分区数目和分区Key不变，就不需要再进行shuffle
+
+
+**宽窄依赖**
+
+
+ * 宽依赖：需要进行shuffle的依赖，被称作宽依赖
+
+ * 窄依赖：这种不需要进行shuffle的依赖，在Spark里被称作窄依赖
+ 
+ 
+跟MapReduce一样，shuffle也是Spark最重要的一个环节，只有通过shuffle，相关数据才能互相计算，构建起复杂的应用逻辑。
+
+
+#### MapReduce 和 Spark的内在联系
+
+梳理了shuffle在MapReduce中和在Spark中的应用（划分计算阶段），我们发现MapReduce和Spark存在一种内在联系。
+
+其实Saprk可以当作MapReduce计算模型的一种不同实现：
+
+
+ * Hadoop MapReduce：简单粗暴地根据shuffle将大数据计算分成Map和Reduce两个阶段。
+ 
+ * Spark：更细腻一点，将前一个的Reduce和后一个的Map连接起来，当作一个阶段持续计算，形成一个更加优雅、高效地计算模型，虽然其本质依然是Map和Reduce。但是这种多个计算阶段依赖执行的方案可以有效减少对HDFS的访问，减少作业的调度执行次数，因此执行速度也更快
+
+
+并且和Hadoop MapReduce主要使用磁盘存储shuffle过程中的数据不同，**Spark优先使用内存进行数据存储**，包括RDD数据。
+除非是内存不够用了，否则是尽可能使用内存， 这也是Spark性能比Hadoop高的另一个原因。
+
+
+**作业、计算任务和任务的时间先后关系**
+
+
+* 作业（job）：DAGSchedualr在遇到action函数（不返回RDD的函数，如count()）的时候，会生成一个作业
+
+* 计算任务（task）：RDD里面的每个数据分片，Spark都会创建一个计算任务去处理，所以一个计算阶段会包含很多个计算任务。
+
+
+关于作业、计算阶段、任务的依赖和时间先后关系你可以通过下图看到。
+
+![](https://static001.geekbang.org/resource/image/2b/d0/2bf9e431bbd543165588a111513567d0.png)
+
+
+* 图中横轴方向是时间，纵轴方向是任务。两条粗黑线之间是一个作业，两条细线之间是一个计算阶段。
+
+* 一个作业至少包含一个计算阶段。水平方向红色的线是任务，每个阶段由很多个任务组成，这些任务组成一个任务集合。
+
+
+DAGScheduler根据代码生成DAG图以后，Spark的任务调度就以任务为单位进行分配，将任务分配到分布式集群的不同机器上执行。
+
+
+
+#### Spark的架构
+
+
+Spark的模块
+
+* drive 驱动程序：Application 的驱动程序。可以理解为使程序运行中的 main 函数
+
+* cluster manager：Spark 的集群管理器，主要负责对整个集群资源的分配和管理。
+
+* workers：Spark 的工作节点，用于执行提交的作业
+
+* executor：真正执行计算任务的组件。
+
+* task：Spark给执行单元发的最小工作单位
+
+
+![](https://static001.geekbang.org/resource/image/16/db/164e9460133d7744d0315a876e7b6fdb.png)
+
+
+上面这张图是Spark的运行流程，我们一步一步来看。
+
+
+```
+1.首先，Spark应用程序启动在自己的JVM进程里，即Driver进程，启动后调用SparkContext初始化执行配置和输入数据。
+SparkContext启动DAGScheduler构造执行的DAG图，切分成最小的执行单位也就是计算任务。
+
+
+2.然后Driver向Cluster Manager请求计算资源，用于DAG的分布式计算。
+Cluster Manager收到请求以后，将Driver的主机地址等信息通知给集群的所有计算节点Worker。
+
+
+3.Worker收到信息以后，根据Driver的主机地址，跟Driver通信并注册，然后根据自己的空闲资源向Driver通报自己可以领用的任务数。
+Driver根据DAG图开始向注册的Worker分配任务。
+
+
+4.Worker收到任务后，启动Executor进程开始执行任务。
+Executor先检查自己是否有Driver的执行代码，如果没有，从Driver下载执行代码，通过Java反射加载后开始执行。
+```
+
+总结来说，Spark有三个主要特性：**RDD的编程模型更简单，DAG切分的多阶段计算过程更快速，使用内存存储中间计算结果更高效**。
+这三个特性使得Spark相对Hadoop MapReduce可以有更快的执行速度，以及更简单的编程实现。
+
+
+
+### HBase
+
+
+之前数据库一直是关系数据库的天下，但是关系数据库具有糟糕的海量数据处理能力和僵硬的设计约束。
+
+NoSQL的概念被提出，NoSQL，主要指非关系的、分布式的、支持海量数据存储的数据库设计模式。简单的说，NoSQL数据库则简单暴力地认为，数据库就是存储数据的，业务逻辑应该由应用程序去处理。
+
+
+
+#### HBase的框架
+
+
+我们先来看一看HBase的架构设计，HBase为可伸缩海量数据储存而设计，实现面向在线业务的实时数据访问延迟。
+
+HBase的伸缩性主要依赖其可分裂的HRegion及可伸缩的分布式文件系统HDFS实现
+
+
+![](https://static001.geekbang.org/resource/image/9f/f7/9f4220274ef0a6bcf253e8d012a6d4f7.png)
+
+
+* HRegion是HBase负责数据存储的主要进程，应用程序对数据的读写操作都是通过和HRegion通信完成.
+
+ 在HBase中，数据以HRegion为单位进行管理，也就是说应用程序如果想要访问一个数据，必须先找到HRegion，然后将数据读写操作提交给HRegion，由 HRegion完成存储层面的数据操作。
+
+
+* HRegionServer是物理服务器，每个HRegionServer上可以启动多个HRegion实例。
+ 
+ -当一个 HRegion中写入的数据太多，达到配置的阈值时，一个HRegion会分裂成两个HRegion，并将HRegion在整个集群中进行迁移，以使HRegionServer的负载均衡。
+
+
+* HMaster：每个HRegion中存储一段Key值区间\[key1, key2)的数据，所有HRegion的信息，包括存储的Key值区间、所在HRegionServer地址、访问端口号等，都记录在HMaster服务器上。
+
+  -为了保证HMaster的高可用，HBase会启动多个HMaster，并通过ZooKeeper选举出一个主服务器。
+
+
+**数据读过程**
+
+应用程序通过ZooKeeper获得主HMaster的地址，输入Key值获得这个Key所在的HRegionServer地址，然后请求HRegionServer上的HRegion，获得所需要的数据。
+
+
+**数据写入过程**
+
+需要先得到HRegion才能继续操作。HRegion会把数据存储在若干个HFile格式的文件中，这些文件使用HDFS分布式文件系统存储，在整个集群内分布并高可用。
+
+ -当一个HRegion中数据量太多时，这个HRegion连同HFile会分裂成两个HRegion，并根据集群中服务器负载进行迁移。
+
+ -如果集群中有新加入的服务器，也就是说有了新的HRegionServer，由于其负载较低，也会把HRegion迁移过去并记录到HMaster，从而实现HBase的线性伸缩。
+
+
+
+#### HBase数据结构上的优化
+
+
+HBase支持列族结构的NoSQL数据库，在创建表的时候，只需要指定列族的名字，无需指定字段（Column）。那什么时候指定字段呢？可以在数据写入时再指定。
+
+通过row key来找到数据，没有schema，不需要大量的数据冗余。
+
+一个列中的类型可以是不一样的
+
+可以找到之前的版本的数据
+
+列中的data可以不存在
+
+
+#### HBase数据存储的高可用性
+
+
+传统的机械式磁盘的访问特性是连续读写很快，随机读写很慢。为了提高数据写入速度，HBase使用了一种叫作LSM树的数据结构进行数据存储。
+
+
+* LSM树的全名是Log Structed Merge Tree，翻译过来就是Log结构合并树。数据写入的时候以Log方式连续写入，然后异步对磁盘上的多个LSM树进行合并。
+
+
+LSM树可以看作是一个N阶合并树。
+
+ -数据写操作（包括插入、修改、删除）都在内存中进行，并且都会创建一个新记录（修改会记录新的数据值，而删除会记录一个删除标志）。
+
+ -这些数据在内存中仍然还是一棵排序树，当数据量超过设定的内存阈值后，会将这棵排序树和磁盘上最新的排序树合并。
+ 
+ -当这棵排序树的数据量也超过设定阈值后，会和磁盘上下一级的排序树合并。合并过程中，会用最新更新的数据覆盖旧的数据（或者记录为不同版本）
+
+
+在LSM树上进行一次数据更新不需要磁盘访问，在内存即可完成。当数据访问以写操作为主，而读操作则集中在最近写入的数据上时，使用LSM树可以极大程度地减少磁盘的访问次数，加快访问速度
+
+
+**小结：**
+
+
+架构上通过数据分片的设计配合HDFS，实现了数据的分布式海量存储；数据结构上通过列族的设计，实现了数据表结构可以在运行期自定义；存储上通过LSM树的方式，使数据可以通过连续写磁盘的方式保存数据，极大地提高了数据写入性能。
+
+
+**列族数据库的缺点**
+
+
+1:列族不好查询，没有传统sql那样按照不同字段方便，只能根据rowkey查询，范围查询scan性能低
+
+2:查询也没有mysql一样的走索引优化，因为列不固定 
+
+3:列族因为不固定，所以很难做一些业务约束，
+
+
 
