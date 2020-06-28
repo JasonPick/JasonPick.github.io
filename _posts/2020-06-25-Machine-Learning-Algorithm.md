@@ -902,9 +902,49 @@ learning rate called eta ,default 0.3
 
 ### LightGBM
 
+LightGBM 提出的主要原因就是为了解决 GBDT 在海量数据遇到的问题
+
+
+**Histogram 算法**
+
+* 直方图算法的基本思想是先把连续的浮点特征值离散化成k个整数，同时构造一个宽度为k的直方图。
+  
+  在遍历数据的时候，根据离散化后的值作为索引在直方图中累积统计量，当遍历一次数据后，直方图累积了需要的统计量，然后根据直方图的离散值，遍历寻找最优的分割点。
+
+![](https://img-blog.csdn.net/20180821183235749?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTgwNzEwMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+优点在于 
+
+  - 内存消耗的降低，直方图算法不仅不需要额外存储预排序的结果
+
+  - 计算代价的降低，预排序算法每遍历一个特征值就需要计算一次分裂的增益，而直方图算法只需要计算k次
+
+
+**带深度限制的 Leaf-wise 的叶子生长策略 　**
+
+LightGBM 放弃了按层增长的决策树生长策略，而使用了带有深度限制的按叶子生长 (leaf-wise) 算法。
+
+Level-wise 过一次数据可以同时分裂同一层的叶子，Leaf-wise 则是一种更为高效的策略，每次从当前所有叶子中，找到分裂增益最大的一个叶子，然后分裂，如此循环。
+
+![](https://img-blog.csdn.net/20180821183445430?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTgwNzEwMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+Leaf-wise 的缺点是可能会长出比较深的决策树，产生过拟合。因此 LightGBM 在 Leaf-wise 之上增加了一个最大深度的限制，在保证高效率的同时防止过拟合。
+
+**直方图加速**
+
+LightGBM 另一个优化是 Histogram（直方图）做差加速。
+
+一个容易观察到的现象：一个叶子的直方图可以由它的父亲节点的直方图与它兄弟的直方图做差得到。
+
+通常构造直方图，需要遍历该叶子上的所有数据，但直方图做差仅需遍历直方图的k个桶。利用这个方法，LightGBM 可以在构造一个叶子的直方图后，可以用非常微小的代价得到它兄弟叶子的直方图，在速度上可以提升一倍。
+
+![](https://img-blog.csdn.net/20180821183520794?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTgwNzEwMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+
 
 
 ## 经典问题
+
 
 ### 样本不均衡的处理方法
 
