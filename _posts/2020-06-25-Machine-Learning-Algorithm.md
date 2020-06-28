@@ -890,8 +890,14 @@ Gain = 120.33,
 output value =  sum of residuals/(num of residuals + lambda)
 
 
-新
+
 ```
+
+新一轮的训练
+
+![](/assets/img/blog/Snip20200628_37.png)
+
+learning rate called eta ,default 0.3
 
 
 ### LightGBM
