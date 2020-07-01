@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 队列专题
-subtitle: Part 2：优先队列
-tags: [algorithms, queue]
+title: 动态规划问题
+subtitle: 整理总结
+tags: [algorithms, dp]
 comments: true
 categories: ['algorithms']
 ---
@@ -178,8 +178,7 @@ public:
         vector<vector<int>> dp(triangle);
         
         for (int i = m-2; i>=0; i--)
-            for (int j = 0; j<triangle[i].size(); j++)
-                dp[i][j] += min(dp[i+1][j],dp[i+1][j+1]);
+            
         return dp[0][0];
         
         
@@ -304,6 +303,41 @@ public:
         }
         return Max;
         
+    }
+};
+```
+
+### #300 最长上升子序列
+
+
+Input: [10,9,2,5,3,7,101,18]
+
+Output: 4 
+
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+
+方法：
+
+- dp[]   |状态定义dp[n]代表从0到n的最长LIS的长度
+         ｜状态转移方程 遍历 0->n-1, 找到maxval，dp[i] = maxval+1;
+	 
+	 O(N^2)
+
+- 二分法 O(NlogN)
+```
+#include <iostream>  
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        if(nums.size() == 0) return 0;
+        vector<int> LIS;
+        
+        for(auto num:nums){
+            auto it = lower_bound(LIS.begin(), LIS.end(), num);
+        if(it==LIS.end()) LIS.push_back(num);
+        else *it = num;
+        }
+        return LIS.size();
     }
 };
 ```
